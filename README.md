@@ -5,3 +5,4 @@ SoftUni React Course Project
 - [x] Initialize git repo
 - [x] Add base vite react project as client
 - [x] CleanUp client
+- [x] Create server with Node.js and MongoDB  
