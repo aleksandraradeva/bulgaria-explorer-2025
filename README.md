@@ -11,6 +11,6 @@ SoftUni React Course Project
 - [] Add project resources (ongoing, don't forget to delete unnecessary assets)
 ## 2. React Router
 - [x] Install react-router-dom
-- [] Setup react-router-dom
+- [x] Setup react-router-dom
 - [] Add routes in App.jsx
 - [] Add links in the navigation
