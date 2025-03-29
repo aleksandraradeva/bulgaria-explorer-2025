@@ -7,6 +7,10 @@ SoftUni React Course Project
 - [x] CleanUp client
 - [x] Create server with Node.js and MongoDB  
 - [x] Convert html to jsx
-- [] Seperate html into components
+- [x] Seperate html into components
 - [] Add project resources (ongoing, don't forget to delete unnecessary assets)
 ## 2. React Router
+- [x] Install react-router-dom
+- [] Setup react-router-dom
+- [] Add routes in App.jsx
+- [] Add links in the navigation
