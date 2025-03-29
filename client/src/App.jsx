@@ -1,3 +1,5 @@
+import { Route, Routes } from "react-router-dom";
+
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
@@ -5,24 +7,25 @@ import TripList from "./components/trip-list/TripList";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import TripCreate from "./components/trip-create/TripCreate";
-import TripEdit from "./components/trip-edit/TripEdit";
 import TripDetails from "./components/trip-details/TripDetails";
 
 function App() {
+    return (
+        <>
+            <Header />
 
-  return (
-    <>
-        <Header />
-        <Home />
-        <TripList />
-        <TripCreate />
-        <TripEdit />
-        <TripDetails />
-        <Login />
-        <Register />
-        <Footer />
-    </>
-  )
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/trips" element={<TripList />} />
+                <Route path="/trips/create" element={<TripCreate />} />
+                <Route path="/trips/tripId/details" element={<TripDetails />} />
+            </Routes>
+
+            <Footer />
+        </>
+    );
 }
 
-export default App
+export default App;
