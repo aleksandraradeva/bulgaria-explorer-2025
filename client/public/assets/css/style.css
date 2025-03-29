@@ -8,7 +8,7 @@ font-family: 'Roboto', sans-serif;
 1.  General css (Reset code)
 2.  Header-top
 3.  Top-area
-4.  Welcome-hero
+4.  Home
 5.  List-topics
 6.  Works  
 7.  Explore
@@ -237,7 +237,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 /*.navbar-toggle */
 
 /*-------------------------------------
-        4.  Welcome-hero
+        4.  Home
 --------------------------------------*/
 .welcome-hero {
     position: relative;
@@ -248,6 +248,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     height:800px;
     z-index: 1;
 }
+
 .welcome-hero:before{
     position: absolute;
     content: " ";
@@ -274,40 +275,38 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     margin-top: 25px;
 }
 
-.single-welcome-hero-form:first-child{border-right: 1px solid #edeff1;}
-.single-welcome-hero-form input {
-    margin-left: 10px;
-    height: 70px;
-    width: 300px;
-    border: 0;
-    background: transparent;
-}
-
 .welcome-hero-btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-    width: 170px;
-    height: 70px;
-    background: #ff545a;
-    text-transform: capitalize;
-    margin: 0 auto; /* Horizontal zentrieren */
-    border-radius: 3px;
-    transition: 0.3s linear;
-    cursor: pointer;
-
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #fff; 
+  width: 170px;
+  height: 70px;
+  background: #ff545a;
+  text-transform: capitalize;
+  margin: 0 auto;
+  border-radius: 3px;
+  transition: background 0.3s linear;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: normal; 
+  border: none;
+  line-height: 70px;
 }
-.welcome-hero-btn:hover{/*background: #fd4043;*/background: #f43032;}
+
+.welcome-hero-btn:hover {
+  background: #f43032; /* Nur der Hintergrund ändert sich */
+  color: #fff; /* Der Text bleibt weiß, keine Farbänderung */
+}
 
 .welcome-hero-btn svg {
-    width:  14px;
-    height:  auto;
-    margin-left:  12px;
+  width: 14px;
+  height: auto;
+  margin-left: 12px;
 }
 
-.welcome-hero-serch {
+.welcome-hero-btn-container {
     margin-top: 50px;  
     display: flex;
     justify-content: center; 

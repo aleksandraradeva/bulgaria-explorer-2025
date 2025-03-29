@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
    
@@ -9,19 +11,19 @@ export default function Header() {
                 <div className="container">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i className="fa fa-bars"></i>
+                            <i className="fLink fa-bars"></i>
                         </button>
-                        <a className="navbar-brand" href="index.html">Bulgaria<span>Explorer</span></a>
+                        <Link to="/" className="navbar-brand">Bulgaria<span>Explorer</span></Link>
                     </div>
 
                     <div className="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                         <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li className=" scroll active"><a href="#home">home</a></li>
-                            <li className="scroll"><a href="#works">explore</a></li>
-                            <li className="scroll"><a href="#explore">my trips</a></li>
-                            <li className="scroll"><a href="#reviews">login</a></li>
-                            <li className="scroll"><a href="#blog">register</a></li>
-                            <li className="scroll"><a href="#contact">logout</a></li>
+                            <li className="scroll"><Link to="/">home</Link></li>
+                            <li className="scroll"><Link to="/trips">explore</Link></li>
+                            <li className="scroll"><Link to="/trips/create">create trip</Link></li>
+                            <li className="scroll"><Link to="/login">login</Link></li>
+                            <li className="scroll"><Link to="/register">register</Link></li>
+                            <li className="scroll"><Link to="/logout">logout</Link></li>
                         </ul>
                     </div>
                 </div>
