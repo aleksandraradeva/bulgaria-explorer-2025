@@ -1,8 +1,3 @@
-/*==================================
-* Author        : "ThemeSine"
-* Template Name : Listrace  HTML Template
-* Version       : 1.0
-==================================== */
 
 /*==================================
 font-family: 'Roboto', sans-serif;
@@ -22,6 +17,9 @@ font-family: 'Roboto', sans-serif;
 10. Blog
 11. Subscribe
 12. Footer
+13. Create form
+14. Edit form
+15. Details page
 ==========================================*/
 
 /*-------------------------------------
@@ -414,147 +412,144 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 /*-------------------------------------
         7. Explore
 --------------------------------------*/
-.explore{
-    padding:117px 0 95px;
+/* Explore Section */
+.explore {
+    padding: 117px 0 95px;
     background: #f8fafb;
-}
-.explore-content{margin-top: 78px;}
-
-.single-explore-item {
+  }
+  
+  .explore-content {
+    margin-top: 78px;
+  }
+  
+  .single-explore-item {
     background: #fff;
     border: 1px solid #edeff1;
     border-radius: 3px;
     margin-bottom: 25px;
-    -webkit-transition: .3s linear; 
-    -moz-transition:.3s linear; 
-    -ms-transition:.3s linear; 
-    -o-transition:.3s linear;
-    transition: .3s linear;
-}
-.single-explore-img{position:relative;overflow: hidden;}
-.single-explore-img:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(162,172,177,.2);
-}
-.single-explore-img-info {
-    position: absolute;
-    bottom:-20px;
-    left: 0;
-    width: 100%;
-    opacity:0;
-    visibility:hidden;
     -webkit-transition: .3s linear;
     -moz-transition: .3s linear;
     -ms-transition: .3s linear;
     -o-transition: .3s linear;
     transition: .3s linear;
-}
-.single-explore-item:hover .single-explore-img-info{
-    opacity:1;
-    visibility:visible;
-    bottom:0px
-}
-.single-explore-img-info button{
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    width: 83px;
-    height: 21px;
-    line-height: 21px;
-    background: #ff545a;
-    border-radius: 3px;
-    color: #fcfcfc;
-    text-transform: capitalize;
-    text-align: center;
-    font-size: 12px;
-}
-.single-explore-image-icon-box {
+  }
+  
+  .single-explore-img {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .single-explore-img img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .single-explore-image-icon-box {
     text-align: right;
     position: absolute;
     bottom: 10px;
-    right:  10px;
-}
-.single-explore-image-icon-box ul li {
-    display:  inline-block;
+    right: 10px;
+  }
+  
+  .single-explore-image-icon-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .single-explore-image-icon-box ul li {
+    display: inline-block;
     width: 30px;
-    height:  28px;
-    line-height:  28px;
+    height: 28px;
+    line-height: 28px;
     background: #252d32;
-    text-align:  center;
-    margin-left:  5px;
-    color:  #cbcccd;
-}
-.single-explore-image-icon-box ul li:hover i{color: #267dff;}
-
-.single-explore-txt {
+    text-align: center;
+    margin-left: 5px;
+    color: #cbcccd;
+  }
+  
+  .single-explore-image-icon-box ul li:hover i {
+    color: #267dff;
+  }
+  
+  .single-explore-txt {
     padding: 26px 25px 24px 15px;
-}
-.single-explore-txt.bg-theme-1 .explore-rating{background: #70a9ff;}
-.single-explore-txt.bg-theme-2 .explore-rating{background: #00c61c;}
-.single-explore-txt.bg-theme-3 .explore-rating{background: #ffcc5d;}
-.single-explore-txt.bg-theme-4 .explore-rating{background: #bd70ff;}
-.single-explore-txt.bg-theme-5 .explore-rating{background: #ff7a40;}
+  }
+  
+  .single-explore-txt h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .explore-location-category {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .explore-location, .explore-category {
+    font-size: 14px;
+    color: #777f85;
+  }
+  
+  .explore-location i, .explore-category i {
+    margin-right: 5px;
+  }
 
-.explore-rating-price,.explore-rating-price a {
+  .explore-location-category span {
+    display: block; /* Make each span element a block-level element */
+    margin-bottom: 5px; /* Optional: Adds space between each span */
+  }
+  
+  .explore-location a, .explore-category a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .explore-location:hover, .explore-category:hover {
+    color: #ff545a;
+  }
+  
+  .close-btn {
+    display: inline-block;
+    background: #ff545a;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .explore-open-close-part {
+    text-align: right; 
+    margin-top: 20px;
+  }
+  
+  .close-btn:hover {
+    background: #f43032;
+  }
+  
+  .single-explore-item:hover {
+    box-shadow: 0 10px 20px rgba(21, 19, 19, .2);
+  }
+  
+  .explore-open-close-part {
+    margin-top: 20px;
+  }
+  
+  .explore-rating-price,
+  .explore-rating-price a {
     font-size: 12px;
     color: #777f85;
     text-transform: capitalize;
-    font-weight: 400;
-    margin: 15px 0 20px;
-}
-.explore-rating-price a {margin:0;}
-.explore-rating {
-    display: inline-block;
-    width: 32px;
-    height: 20px;
-    line-height: 20px;
-    color: #fff;
-    text-align: center;
-    border-radius: 3px;
-    font-weight: 500;
-    margin-right: 10px;
-}
-.explore-price {color: #f63138;}
-.explore-price-box {
-    display: inline-block;
-    padding: 0 10px;
-    margin: 0 8px;
-    border-left: 1px solid #dde0e4;
-    border-right: 1px solid #dde0e4;
-}
-.explore-person {
-    padding-bottom: 28px;
-    border-bottom: 1px solid #e1e5eb;
-}
-.explore-person-img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-.explore-person p {font-size: 12px;}
-.explore-open-close-part {
-    margin-top: 20px;
-}
-.close-btn {
-    color: #f63138;
-    text-transform: capitalize;
-}
-.close-btn.open-btn {color: #00c437;}
-.explore-map-icon{text-align: right;}
-.explore-map-icon a svg {
-    width: 12px;
-    height: 14px;
-    margin-left: 23px;
-    color: #767f86;
-}
-.explore-map-icon a svg:hover{color: #f63138;}
-.single-explore-txt.bg-theme-2 .explore-map-icon a svg:hover{color: #00c437;}
-.single-explore-item:hover{box-shadow: 0 10px 20px rgba(21,19,19,.2);}
+  } 
+
+  
 
 /*-------------------------------------
         8. Reviews
@@ -785,29 +780,22 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 
 /*appsLand-btn*/
 .appsLand-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #ff545a;
+    position: static; 
     display: inline-block;
+    margin: 0 auto;
+    background: #ff545a;
     width: 180px;
     height: 60px;
     line-height: 60px;
-    text-decoration: none;
-    border-top-right-radius:3px;
-    border-bottom-right-radius:3px;
-    text-transform:capitalize;
-    color: #fff;
+    border-radius: 3px;
     font-size: 16px;
+    color: #fff;
     font-weight: 500;
-    border: 0;
-    overflow: hidden;
+    border: none;
     cursor: pointer;
-    -webkit-transition:0.3s ease-in-out;
-    -moz-transition:0.3s ease-in-out;
-    -o-transition:0.3s ease-in-out;
-    transition:0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
+
 .appsLand-btn:hover, .appsLand-btn:focus, .appsLand-btn:active {
     text-decoration: none;
     outline: none;
@@ -881,5 +869,445 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 .footer-social span:hover{color: #ff545a;}
 .footer-social a:hover {background:#ff545a;color: #fff;}
 
+
+/*-------------------------------------
+        13. Create Form
+--------------------------------------*/
+/* Create Form */
+.create-form {
+    width: 100%;
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background: #f8fafb;
+    border-radius: 8px;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.1);
+  }
+  
+  /* Title */
+  .create-form h2 {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Group */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  input,
+  select,
+  textarea {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #a5adb3;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.1);
+    transition: 0.3s linear;
+  }
+  
+  /* Input Hover Effect */
+  input:hover,
+  select:hover,
+  textarea:hover {
+    box-shadow: 0 5px 20px rgba(21, 19, 19, 0.4);
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    padding: 12px 20px;
+    background: #ff545a;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Submit Button Hover */
+  .submit-btn:hover,
+  .submit-btn:focus,
+  .submit-btn:active {
+    background: #f43032;
+    box-shadow: 0 5px 10px rgba(71, 71, 71, 0.4);
+    text-decoration: none;
+    outline: none;
+  }
+  
+  /* Input and Button Focus Effect */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border: 1px solid #ff545a;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.2);
+  }
+  
+  /* Label Styling */
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Textarea Specific */
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /*-------------------------------------
+        13. Edit Form
+--------------------------------------*/
+.edit-form {
+    width: 100%;
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background: #f8fafb;
+    border-radius: 8px;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.1);
+  }
+  
+  /* Title */
+  .edit-form h2 {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Group */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  input,
+  select,
+  textarea {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #a5adb3;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.1);
+    transition: 0.3s linear;
+  }
+  
+  /* Input Hover Effect */
+  input:hover,
+  select:hover,
+  textarea:hover {
+    box-shadow: 0 5px 20px rgba(21, 19, 19, 0.4);
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    padding: 12px 20px;
+    background: #ff545a;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Submit Button Hover */
+  .submit-btn:hover,
+  .submit-btn:focus,
+  .submit-btn:active {
+    background: #f43032;
+    box-shadow: 0 5px 10px rgba(71, 71, 71, 0.4);
+    text-decoration: none;
+    outline: none;
+  }
+  
+  /* Input and Button Focus Effect */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border: 1px solid #ff545a;
+    box-shadow: 0 0px 10px rgba(21, 19, 19, 0.2);
+  }
+  
+  /* Label Styling */
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Textarea Specific */
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+    /*-------------------------------------
+        14. Details Page
+--------------------------------------*/
+.trip-details-page {
+    padding: 60px 0;
+    color: #767f86;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Header Styles */
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .section-header h2 {
+    color: #343a3f;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  .trip-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .trip-location, .trip-category {
+    display: flex;
+    align-items: center;
+    color: #767f86;
+    font-size: 16px;
+    gap: 8px;
+  }
+  
+  /* Trip Body */
+  .trip-body {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  /* Image Section */
+  .trip-image {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .trip-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .trip-image:hover img {
+    transform: scale(1.05);
+  }
+  
+  .favorite-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+  }
+  
+  .favorite-btn svg {
+    color: #ccc;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  
+  .favorite-btn.active svg {
+    color: #ff5a5f;
+  }
+  
+  .favorite-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Content Section */
+  .trip-content {
+    padding: 30px;
+  }
+  
+  .trip-description {
+    margin-bottom: 30px;
+  }
+  
+  .trip-description h3 {
+    color: #343a3f;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .trip-description p {
+    color: #767f86;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  
+  /* Additional Information */
+  .additional-info {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+  }
+  
+  .info-item svg {
+    color: #4a90e2;
+    font-size: 18px;
+    margin-top: 3px;
+  }
+  
+  .info-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-content strong {
+    font-weight: 500;
+    color: #343a3f;
+    margin-bottom: 5px;
+  }
+  
+  .info-content span {
+    color: #767f86;
+  }
+  
+  /* Action Buttons */
+  .trip-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+  }
+  
+  .admin-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .back-btn {
+    background-color: #fff;
+    color: #343a3f;
+    border: 1px solid #ddd;
+  }
+  
+  .back-btn:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .edit-btn {
+    background-color: #4a90e2;
+    color: #fff;
+    border: 1px solid #4a90e2;
+  }
+  
+  .edit-btn:hover {
+    background-color: #3a80d2;
+  }
+  
+  .delete-btn {
+    background-color: #ff5a5f;
+    color: #fff;
+    border: 1px solid #ff5a5f;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff4045;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .trip-image {
+      height: 300px;
+    }
+    
+    .trip-content {
+      padding: 20px;
+    }
+    
+    .trip-actions {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .admin-actions {
+      width: 100%;
+    }
+    
+    .action-btn {
+      flex: 1;
+      justify-content: center;
+    }
+  }
 
 /*========================Thank you=================
