@@ -11,7 +11,9 @@ const userSchema = new mongoose.Schema({
       required: [true, "Password is required"],
       minlength: [6, "Password must be at least 6 characters long"],
     },
+    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Trip' }],
   },
+  
   { timestamps: true }
 );
 

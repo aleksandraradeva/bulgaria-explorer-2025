@@ -32,7 +32,12 @@ const tripSchema = new mongoose.Schema({
     price: {
         type: String,
         required: [true, "Price/Entrance Fee is required"],
-    }
+    },
+    author: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true 
+      }
 }, 
 { timestamps: true });
 
