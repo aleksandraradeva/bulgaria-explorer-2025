@@ -5,7 +5,9 @@ SoftUni React Course Project
 - [x] Initialize git repo
 - [x] Add base vite react project as client
 - [x] CleanUp client
-- [x] Create server with Node.js and MongoDB  
+- [x] Create server with Node.js and MongoDB
+- [ ] xxx
+- [ ] xxx
 - [x] Convert html to jsx
 - [x] Seperate html into components
 - [] Add project resources (ongoing, don't forget to delete unnecessary assets)
@@ -16,6 +18,6 @@ SoftUni React Course Project
 - [x] Add links in the navigation
 ## 3. Create Service Layer
 - [] Service layer architecture discusion
-- [] Abstract requester
+- [x] Abstract requester
 - [] Add games api
 - [] Preseed server data
