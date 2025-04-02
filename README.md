@@ -19,5 +19,5 @@ SoftUni React Course Project
 ## 3. Create Service Layer
 - [] Service layer architecture discusion
 - [x] Abstract requester
-- [] Add games api
+- [x] Add trip api
 - [] Preseed server data
