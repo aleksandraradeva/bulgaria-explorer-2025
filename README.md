@@ -6,8 +6,8 @@ SoftUni React Course Project
 - [x] Add base vite react project as client
 - [x] CleanUp client
 - [x] Create server with Node.js and MongoDB
-- [ ] Add server routes, create Mongo DB Models
-- [ ] xxx
+- [x] Create Mongo DB Models (Trip)
+- [x] Add server routes (Trip)
 - [x] Convert html to jsx
 - [x] Seperate html into components
 - [] Add project resources (ongoing, don't forget to delete unnecessary assets)
