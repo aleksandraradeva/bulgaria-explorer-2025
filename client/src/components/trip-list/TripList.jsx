@@ -1,8 +1,24 @@
-import { useEffect } from "react";
+import TripListItem from "./trip-list-item/TripListItem";
+import tripsApi from "../../api/trips-api";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEuro, faHeart, faMapPin, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faFlag } from "@fortawesome/free-solid-svg-icons";
+
+import { useEffect, useState } from "react";
+
+
 
 export default function TripList() {
+
+    const [trips, setTrips] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const trips = await tripsApi.getAllTrips();
+            setTrips(trips);
+        })();
+    },[])
+
     return (
         <section id="explore" className="explore">
             <div className="container">
@@ -13,43 +29,18 @@ export default function TripList() {
 
                 <div className="explore-content">
                     <div className="row">
-                        <div className="col-md-4 col-sm-6">
-                            <div className="single-explore-item">
-                                {/* Image Section */}
-                                <div className="single-explore-img">
-                                    <img src="https://cdn.pixabay.com/photo/2020/03/05/20/10/rila-4905350_960_720.jpg" alt="Trip Image" />
-                                </div>
-
-                                {/* Text Section */}
-                                <div className="single-explore-txt">
-                                    <h2>Rila Monastery</h2>
-
-                                    {/* Location and Category */}
-                                    <div className="explore-location-category">
-                                        <span className="explore-location">
-                                            <FontAwesomeIcon icon={faMapPin} /> Sofia, Bulgaria
-                                        </span>
-                                        <span className="explore-category">
-                                            <FontAwesomeIcon icon={faTag} /> Culture
-                                        </span>
-                                        <span className="explore-category">
-                                            <FontAwesomeIcon icon={faEuro} /> Entrance free
-                                        </span>
-                                    </div>
-
-                                    {/* Button for Details */}
-                                    <div className="explore-open-close-part">
-                                        <div className="row">
-                                            <div className="col-sm-12">
-                                                <button className="close-btn">Details</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {trips.length 
+                        ? (trips.map((trip) => <TripListItem key={trip._id} name={trip.name} image={trip.image} location={trip.location} category={trip.category} price={trip.price} />)) 
+                        : (<div className="no-trips">
+                        <h2 className="section-header">No trips yet!</h2>
+                        <p className="no-trips-text">Be the first to add an amazing trip experience.</p>
+                        <FontAwesomeIcon icon={faFlag} size="5x" color="#888" />
+                        </div>)
+                        }
                     </div>
                 </div>
+
+                
             </div>
         </section>
     );
