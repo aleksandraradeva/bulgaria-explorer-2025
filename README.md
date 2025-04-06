@@ -25,8 +25,8 @@ SoftUni React Course Project
 ## 4. Page Implementation & Hooks
 - [x] Trip list (Catalog) (READ)
   - [x] Seperate list item logic in components
-  - [ ] Add Spinner
-  - [ ] Add custom hook useTrips
+  - [x] Add Spinner
+  - [x] Add custom hook useTrips
 - [] Trip Details
   - [] Add details link
   - [] Add details route
