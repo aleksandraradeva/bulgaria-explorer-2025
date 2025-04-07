@@ -12,7 +12,7 @@ import TripDetails from "./components/trip-details/TripDetails";
 function App() {
     return (
         <>
-            <Header />
+            <Header /> 
 
             <Routes>
                 <Route path="/" element={<Home />} />

@@ -81,6 +81,12 @@ export function useUpdateTrip() {
     return { updateTrip, isLoading };
 };
 
+export function useGetTripById (tripId) {
+    const [trip, setTrip] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+}
+
+
 export function useDeleteTrip() {
     const [isLoading, setIsLoading] = useState(false);
 
