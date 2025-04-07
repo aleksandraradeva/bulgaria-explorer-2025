@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import HowItWorks from "./how-it-works/HowItWorks"
 
 export default function Home() {
   return (
+	<>
     <section id="home" className="welcome-hero">
         
 		<div className="container">
@@ -16,8 +18,11 @@ export default function Home() {
          </div>
        
 	    </div>
-
     </section>
+	<HowItWorks />
+	</>
+
+	
 
   );
 };
