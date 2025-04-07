@@ -6,7 +6,7 @@ const Trip = require('../models/Trip');
 // READ all trips
 router.get('/', async (req, res) => {
   try {
-    const trips = await Trip.find();
+    const trips = await Trip.find().sort({ createdAt: -1 });
     res.json(trips);
   } catch (err) {
     res.status(500).json({ error: err.message });
