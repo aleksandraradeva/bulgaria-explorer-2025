@@ -1,109 +1,61 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import useForm from "../../hooks/useForm";
+import { useGetOneTrip, useUpdateTrip } from "../../hooks/useTrips";
+
+import TripForm from "../trip-form/TRipForm";
+import Spinner from "../spinner/Spinner";
+
 export default function TripEdit() {
-  return (
-    <div className="form-container">
-    <form className="edit-form">
-      <h2>Edit Your Trip</h2>
+    const initialValues = {
+        name: "",
+        location: "",
+        description: "",
+        bestTimeToVisit: "",
+        category: "",
+        image: "",
+        price: "",
+    };
 
-      {/* Name of the Trip */}
-      <div className="form-group">
-        <label htmlFor="name">Name of the Trip</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-        //   value={formData.name}
-        //   onChange={handleChange}
-        />
-      </div>
+    const { tripId } = useParams();
+    const { formData, formChangeHandler, resetForm, populateFormData } = useForm(initialValues);
+    const navigate = useNavigate();
 
-      {/* Location */}
-      <div className="form-group">
-        <label htmlFor="location">Location</label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-        //   value={formData.location}
-        //   onChange={handleChange}
-        />
-      </div>
+    const { trip, isLoading, error } = useGetOneTrip(tripId);
+    const { updateTrip } = useUpdateTrip();
 
-      {/* Description */}
-      <div className="form-group">
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-        //   value={formData.description}
-        //   onChange={handleChange}
-        />
-      </div>
+    // When trip is loaded, populate the form
+    useEffect(() => {
+        if (trip) {
+            populateFormData(trip);
+        }
+    }, [trip]);
 
-      {/* Best Time to Visit */}
-      <div className="form-group">
-        <label htmlFor="bestTimeToVisit">Best Time to Visit</label>
-        <input
-          type="text"
-          id="bestTimeToVisit"
-          name="bestTimeToVisit"
-        //   value={formData.bestTimeToVisit}
-        //   onChange={handleChange}
-        />
-      </div>
+    const formSubmitHandler = async (e) => {
+        e.preventDefault();
+        try {
+            // Update trip on server
+            await updateTrip(tripId, formData);
+            navigate(`/trips/${tripId}/details`);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
 
-      {/* Category */}
-      <div className="form-group">
-        <label htmlFor="category">Category</label>
-        <select
-          id="category"
-          name="category"
-        //   value={formData.category}
-        //   onChange={handleChange}
-        >
-                <option value="">Select Category</option>
-                <option value="Culture">Culture</option>
-                <option value="Nature">Nature</option>
-                <option value="Historical">Historical</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Religious">Religious</option>
-                <option value="Beaches">Beaches</option>
-                <option value="Villages & Traditions">Villages & Traditions</option>
-                <option value="Architecture">Architecture</option>
-                <option value="Wine & Culinary">Wine & Culinary</option>
-                <option value="Spa & Wellness">Spa & Wellness</option>
+    if (isLoading) return <Spinner />;
 
-        </select>
-      </div>
+    if (error) {
+        return <h2 className="section-header">No trip found!</h2>;
+    }
 
-      {/* Image */}
-      <div className="form-group">
-        <label htmlFor="image">Image URL</label>
-        <input
-          type="text"
-          id="image"
-          name="image"
-        //   value={formData.image}
-        //   onChange={handleChange}
-        />
-      </div>
-
-      {/* Price/Entrance Fee */}
-      <div className="form-group">
-        <label htmlFor="price">Price/Entrance Fee</label>
-        <input
-          type="text"
-          id="price"
-          name="price"
-        //   value={formData.price}
-        //   onChange={handleChange}
-        />
-      </div>
-
-      {/* Submit Button */}
-      <div className="form-group">
-        <button type="submit" className="submit-btn">Update Trip</button>
-      </div>
-    </form>
-  </div>
-  );
-};
+    return (
+        <div className="form-container">
+            <TripForm 
+              formData={formData} 
+              formChangeHandler={formChangeHandler} 
+              onSubmit={formSubmitHandler} 
+              submitLabel="Edit" />
+        </div>
+    );
+}
