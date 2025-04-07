@@ -28,10 +28,14 @@ SoftUni React Course Project
   - [x] Add Spinner
   - [x] Add custom hook useTrips
 - [x] Trip Details
-  - [] Add details link
-  - [] Add details route
-  - [] Api function getOne
-- [] Create trip (CREATE)
+  - [x] Add details link
+  - [x] Add details route
+  - [x] Api function getOne
+- [x] Create trip (CREATE)
+  - [x] Add generic form to use for create and edit
+  - [x] Add custom hook useForm
+- [ ] Update trip (UPDATE)
+- [ ] Delete trip (DELETE)
 - [] Home - Lates Trips?
 ## Error Handling
 - [x] Fetcher API & Trips API
