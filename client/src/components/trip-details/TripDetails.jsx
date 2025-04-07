@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin, faTag, faCalendarAlt, faEuro, faHeart, faArrowLeft, faFlag } from "@fortawesome/free-solid-svg-icons";
 
 import { useGetOneTrip } from "../../hooks/useTrips";
-import { useEditClickHandler, useDeleteClickHandler } from "../../hooks/useClickHandlers";
+import { useEditClickHandler, useDeleteClickHandler, useNavigateToCatalog } from "../../hooks/useClickHandlers";
 import Spinner from "../spinner/Spinner";
 
 
@@ -15,6 +15,7 @@ export default function TripDetails() {
     const [favorite, setFavorite] = useState(false);
     const { editClickHandler } = useEditClickHandler();
     const { deleteClickHandler } = useDeleteClickHandler();
+    const { navigateToCatalog } = useNavigateToCatalog();
 
     const toggleFavorite = () => {
         setFavorite(!favorite);
@@ -83,8 +84,8 @@ export default function TripDetails() {
     
                 {/* Action Buttons */}
                 <div className="trip-actions">
-                  <button className="action-btn back-btn">
-                    <FontAwesomeIcon icon={faArrowLeft} /> Back to All Trips
+                  <button className="action-btn back-btn" onClick={navigateToCatalog}>
+                    <FontAwesomeIcon icon={faArrowLeft}/> Back to All Trips
                   </button>
                   <div className="admin-actions">
                     <button className="action-btn edit-btn" onClick={() => editClickHandler(trip._id)} >Edit</button>

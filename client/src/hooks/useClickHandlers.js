@@ -14,8 +14,18 @@ export function useDeleteClickHandler() {
     const navigate = useNavigate();
 
     const deleteClickHandler = (tripId) => {
-        navigate(`/trips/${tripId}/edit`);
+        navigate(`/trips/${tripId}/delete`);
     };
 
     return { deleteClickHandler };
+}
+
+export function useNavigateToCatalog() {
+    const navigate = useNavigate();
+
+    const navigateToCatalog = () => {
+        navigate("/trips");
+    };
+
+    return { navigateToCatalog };
 }
