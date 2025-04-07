@@ -1,76 +1,99 @@
-import { useState, useEffect } from 'react';
-import tripsApi from '../api/trips-api';
+import { useState, useEffect } from "react";
+import tripsApi from "../api/trips-api";
 
-const useTrips = () => {
+export function useGetAllTrips() {
     const [trips, setTrips] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const getAllTrips = async () => {
+        (async () => {
             try {
                 setIsLoading(true);
-                const data = await tripsApi.getAllTrips();
-                setTrips(data);
+                const trips = await tripsApi.getAllTrips();
+                setTrips(trips);
             } catch (err) {
-                setError(err.message);
+                console.log(err.message);
             } finally {
                 setIsLoading(false);
             }
-        };
-
-        getAllTrips();
+        })();
     }, []);
 
-    const getOneTrip = async (tripId) => {
-        try {
-            return await tripsApi.getOneTrip(tripId);
-        } catch (err) {
-            setError(err.message);
-            return null;
-        }
-    };
+    return { trips, isLoading };
+};
+
+
+export function useGetOneTrip(tripId) {
+    const [trip, setTrip] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (!tripId) return; 
+
+        (async () => {
+            try {
+                setIsLoading(true);
+                const trip = await tripsApi.getOneTrip(tripId);
+                setTrip(trip);
+            } catch (err) {
+                console.log(err.message);
+            } finally {
+                setIsLoading(false);
+            }
+        })();
+    }, [tripId]);
+
+    return { trip, isLoading };
+};
+
+
+export function useCreateTrip() {
+    const [isLoading, setIsLoading] = useState(false);
 
     const createTrip = async (tripData) => {
         try {
-            const newTrip = await tripsApi.createTrip(tripData);
-            setTrips((prev) => [...prev, newTrip]);
+            setIsLoading(true);
+            await tripsApi.createTrip(tripData);
         } catch (err) {
-            setError(err.message);
+            console.log(err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    return { createTrip, isLoading };
+};
+
+export function useUpdateTrip() {
+    const [isLoading, setIsLoading] = useState(false);
 
     const updateTrip = async (tripId, tripData) => {
         try {
-            const updated = await tripsApi.updateTrip(tripId, tripData);
-            setTrips((prev) =>
-                prev.map((trip) =>
-                    trip._id === updated._id ? updated : trip
-                )
-            );
+            setIsLoading(true);
+            await tripsApi.updateTrip(tripId, tripData);
         } catch (err) {
-            setError(err.message);
+            console.log(err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    return { updateTrip, isLoading };
+};
+
+export function useDeleteTrip() {
+    const [isLoading, setIsLoading] = useState(false);
 
     const deleteTrip = async (tripId) => {
         try {
+            setIsLoading(true);
             await tripsApi.deleteTrip(tripId);
-            setTrips((prev) => prev.filter((trip) => trip._id !== tripId));
         } catch (err) {
-            setError(err.message);
+            console.log(err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    return {
-        trips,
-        isLoading,
-        error,
-        getOneTrip,
-        createTrip,
-        updateTrip,
-        deleteTrip
-    };
-};
-
-export default useTrips;
+    return { deleteTrip, isLoading };
+}

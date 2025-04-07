@@ -12,15 +12,16 @@ async function getAllTrips() {
     }
 }
 
-async function getOneTrip(tripId) {
+function getOneTrip(tripId) {
     try {
         if (!tripId) {
             throw new Error("Trip Id is required");
         }
-        const trip = await fetcher.get(`${BASE_URL}/${tripId}/details`);
+        const trip = fetcher.get(`${BASE_URL}/${tripId}/details`);
         return trip;
     } catch (error) {
         throw new Error("Failed to fetch trip details.");
+        
     }
 }
 

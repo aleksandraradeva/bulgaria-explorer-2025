@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 
 //READ one trip
 router.get('/:id/details', async (req, res) => {
+
   try {
     const trip = await Trip.findById(req.params.id);
     if (!trip) return res.status(404).json({ error: 'Trip not found' });

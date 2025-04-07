@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuro, faHeart, faMapPin, faTag } from "@fortawesome/free-solid-svg-icons";
 
 export default function TripListItem({
+    id,
     name,
     image,
     location,
@@ -37,7 +40,7 @@ export default function TripListItem({
                     <div className="explore-open-close-part">
                         <div className="row">
                             <div className="col-sm-12">
-                                <button className="close-btn">Details</button>
+                                <Link to={`/trips/${id}/details`} className="close-btn">Details</Link>
                             </div>
                         </div>
                     </div>

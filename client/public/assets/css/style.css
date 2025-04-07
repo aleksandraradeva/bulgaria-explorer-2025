@@ -314,7 +314,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 }
 
 /*-------------------------------------
-        5. List-topuics
+        5. List-topics
 --------------------------------------*/
 .list-topics-content {
     position: relative;
@@ -536,7 +536,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     margin-top: 10px;
     margin-left: auto;
     text-align: center;
+    box-sizing: border-box;
   }
+
 
   .explore-open-close-part {
     text-align: right; 
@@ -544,8 +546,13 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
   }
   
   .close-btn:hover {
-    background: #f43032;
+    background: #ff3a41;
+    box-shadow: 0 2px 5px rgba(255, 84, 90, 0.3);
   }
+
+  .close-btn:active {
+  background: #e63037;
+}
   
   .single-explore-item:hover {
     box-shadow: 0 10px 20px rgba(21, 19, 19, .2);
@@ -1397,4 +1404,6 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
   }
 }
 
+
 /*========================Thank you=================
+

@@ -27,7 +27,7 @@ SoftUni React Course Project
   - [x] Seperate list item logic in components
   - [x] Add Spinner
   - [x] Add custom hook useTrips
-- [] Trip Details
+- [x] Trip Details
   - [] Add details link
   - [] Add details route
   - [] Api function getOne
