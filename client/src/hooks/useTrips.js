@@ -26,6 +26,7 @@ export function useGetAllTrips() {
 export function useGetOneTrip(tripId) {
     const [trip, setTrip] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null); 
 
     useEffect(() => {
         if (!tripId) return; 
@@ -33,17 +34,19 @@ export function useGetOneTrip(tripId) {
         (async () => {
             try {
                 setIsLoading(true);
+                setError(null);
                 const trip = await tripsApi.getOneTrip(tripId);
                 setTrip(trip);
             } catch (err) {
-                console.log(err.message);
+                setError("No trip found!");
+                setTrip(null);
             } finally {
                 setIsLoading(false);
             }
         })();
     }, [tripId]);
 
-    return { trip, isLoading };
+    return { trip, isLoading, error };
 };
 
 
@@ -64,6 +67,7 @@ export function useCreateTrip() {
     return { createTrip, isLoading };
 };
 
+
 export function useUpdateTrip() {
     const [isLoading, setIsLoading] = useState(false);
 
@@ -80,11 +84,6 @@ export function useUpdateTrip() {
 
     return { updateTrip, isLoading };
 };
-
-export function useGetTripById (tripId) {
-    const [trip, setTrip] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-}
 
 
 export function useDeleteTrip() {
