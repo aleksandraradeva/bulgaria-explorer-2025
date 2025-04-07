@@ -12,5 +12,7 @@ export default function useForm (initialValues) {
 
   const resetForm = () => setFormData(initialValues);
 
-  return { formData, formChangeHandler, resetForm };
+  const populateFormData = (trip) => setFormData(trip);
+
+  return { formData, formChangeHandler, resetForm, populateFormData };
 }
