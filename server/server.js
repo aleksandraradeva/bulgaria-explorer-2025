@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// const userRoutes = require('./routes/userRoutes');
+
+const tripRoutes = require('./routes/trips');
 
 const app = express();
 const PORT = 3000;
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-// app.use('/api/users', userRoutes);
+app.use('/api/trips', tripRoutes);
 
 // Server Start
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
