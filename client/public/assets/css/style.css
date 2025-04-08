@@ -358,8 +358,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 /*-------------------------------------
         6. Works 
 --------------------------------------*/
-.works{padding: 0 0 90px; background: #f8fafb}
-.works-content {margin-top: 73px;}
+.works{padding: 90px 0 90px; background: #f8fafb}
+.works-content {margin-top: 78px;}
 
 .single-how-works{
     text-align: center;
@@ -414,179 +414,178 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
         7. Explore
 --------------------------------------*/
 /* Explore Section */
+
 .explore {
-    padding: 117px 0 95px;
-    background: #f8fafb;
-  }
-  
-  .explore-content {
-    margin-top: 78px;
-  }
-  
-  .single-explore-item {
-    background: #fff;
-    border: 1px solid #edeff1;
-    border-radius: 3px;
-    margin-bottom: 25px;
-    -webkit-transition: .3s linear;
-    -moz-transition: .3s linear;
-    -ms-transition: .3s linear;
-    -o-transition: .3s linear;
-    transition: .3s linear;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .single-explore-img {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .single-explore-img img {
-    width: 100%;
-    height: auto;
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-  }
-  
-  .single-explore-image-icon-box {
-    text-align: right;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
-  
-  .single-explore-image-icon-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .single-explore-image-icon-box ul li {
-    display: inline-block;
-    width: 30px;
-    height: 28px;
-    line-height: 28px;
-    background: #252d32;
-    text-align: center;
-    margin-left: 5px;
-    color: #cbcccd;
-  }
-  
-  .single-explore-image-icon-box ul li:hover i {
-    color: #267dff;
-  }
-  
-  .single-explore-txt {
-    padding: 20px; 
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  padding: 117px 0 95px;
+  background: #f8fafb;
 }
-  
-  .single-explore-txt h2 {
-    font-size: 24px;
-    color: #333;
-    min-height: 60px;
-    display: block; 
-    margin-bottom: 10px; 
-  }
-  
-  .explore-location-category {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .explore-location, .explore-category {
-    font-size: 14px;
-    color: #777f85;
-  }
-  
-  .explore-location i, .explore-category i {
-    margin-right: 5px;
-  }
 
-  .explore-location-category span {
-    display: block; /* Make each span element a block-level element */
-    margin-bottom: 5px; /* Optional: Adds space between each span */
-  }
-  
-  .explore-location a, .explore-category a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .explore-location:hover, .explore-category:hover {
-    color: #ff545a;
-  }
-  
-  .close-btn {
-    display: inline-block;
-    background: #ff545a;
-    color: white;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: none;
-    margin-top: 10px;
-    margin-left: auto;
-    text-align: center;
-    box-sizing: border-box;
-  }
-
-
-  .explore-open-close-part {
-    text-align: right; 
-    margin-top: 20px;
-  }
-  
-  .close-btn:hover {
-    background: #ff3a41;
-    box-shadow: 0 2px 5px rgba(255, 84, 90, 0.3);
-  }
-
-  .close-btn:active {
-  background: #e63037;
+.explore-content {
+  margin-top: 78px;
 }
-  
-  .single-explore-item:hover {
-    box-shadow: 0 10px 20px rgba(21, 19, 19, .2);
-  }
-  
-  .explore-open-close-part {
-    margin-top: 20px;
-  }
-  
-  .explore-rating-price,
-  .explore-rating-price a {
-    font-size: 12px;
-    color: #777f85;
-    text-transform: capitalize;
-  } 
 
-  .no-trips {
-    text-align: center;
-    padding: 50px 20px;
+.single-explore-item {
+  background: #fff;
+  border: 1px solid #edeff1;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  -webkit-transition: .3s linear;
+  -moz-transition: .3s linear;
+  -ms-transition: .3s linear;
+  -o-transition: .3s linear;
+  transition: .3s linear;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.single-explore-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.single-explore-img img {
+  width: 100%;
+  height: auto;
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.single-explore-image-icon-box {
+  text-align: right;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.single-explore-image-icon-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.single-explore-image-icon-box ul li {
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+  line-height: 28px;
+  background: #252d32;
+  text-align: center;
+  margin-left: 5px;
+  color: #cbcccd;
+}
+
+.single-explore-image-icon-box ul li:hover i {
+  color: #267dff;
+}
+
+.single-explore-txt {
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.single-explore-txt h2 {
+  font-size: 24px;
+  color: #333;
+  min-height: 60px;
+  display: block; 
+  margin-bottom: 10px; 
+}
+
+.explore-location-category {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.explore-location, .explore-category {
+  font-size: 14px;
+  color: #777f85;
+}
+
+.explore-location i, .explore-category i {
+  margin-right: 5px;
+}
+
+.explore-location-category span {
+  display: block; /* Make each span element a block-level element */
+  margin-bottom: 5px; /* Optional: Adds space between each span */
+}
+
+.explore-location a, .explore-category a {
+  color: #333;
+  text-decoration: none;
+}
+
+.explore-location:hover, .explore-category:hover {
+  color: #ff545a;
+}
+
+.close-btn {
+  display: inline-block;
+  background: #ff545a;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  margin-left: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+.explore-open-close-part {
+  text-align: right; 
+  margin-top: 20px;
+}
+
+.close-btn:hover {
+  background: #ff3a41;
+  box-shadow: 0 2px 5px rgba(255, 84, 90, 0.3);
+}
+
+.close-btn:active {
+background: #e63037;
+}
+
+.single-explore-item:hover {
+  box-shadow: 0 10px 20px rgba(21, 19, 19, .2);
+}
+
+.explore-open-close-part {
+  margin-top: 20px;
+}
+
+.explore-rating-price,
+.explore-rating-price a {
+  font-size: 12px;
+  color: #777f85;
+  text-transform: capitalize;
+} 
+
+.no-trips {
+  text-align: center;
+  padding: 50px 20px;
 }
 
 .no-trips-img {
-    max-width: 200px;
-    margin-bottom: 20px;
+  max-width: 200px;
+  margin-bottom: 20px;
 }
 
 .no-trips-text {
-    color: #777;
-    font-size: 18px;
-    margin-bottom: 15px;
-    font-weight: 400;
+  color: #777;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 400;
 }
-
-
 /*-------------------------------------
         8. Reviews
 --------------------------------------*/
