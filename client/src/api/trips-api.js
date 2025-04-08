@@ -10,7 +10,7 @@ async function getAllTrips() {
     } catch (error) {
         throw new Error("Failed to fetch trips.");
     }
-}
+};
 
 function getOneTrip(tripId) {
     try {
@@ -23,7 +23,7 @@ function getOneTrip(tripId) {
         throw new Error("Failed to fetch trip details.");
         
     }
-}
+};
 
 async function createTrip(tripData) {
     try {
@@ -32,9 +32,9 @@ async function createTrip(tripData) {
     } catch (error) {
         throw new Error("Failed to create trip.");
     }
-}
+};
 
-//Check, if tripId needed
+
 async function updateTrip(tripId, tripData) {
     try {
         if (!tripId) {
@@ -45,9 +45,9 @@ async function updateTrip(tripId, tripData) {
     } catch (error) {
         throw new Error("Failed to update trip.");
     }
-}
+};
 
-//Check, if tripId needed
+
 async function deleteTrip(tripId) {
     try {
         if (!tripId) {
@@ -57,7 +57,16 @@ async function deleteTrip(tripId) {
     } catch (error) {
         throw new Error("Failed to delete trip.");
     }
-}
+};
+
+async function getMyTrips() {
+    try {
+      const myTrips = await fetcher.get(`${BASE_URL}/mytrips`);
+      return myTrips;
+    } catch (error) {
+      throw new Error("Failed to fetch user's trips.");
+    }
+};
 
 export default {
     getAllTrips,
@@ -65,4 +74,5 @@ export default {
     createTrip,
     updateTrip,
     deleteTrip,
+    getMyTrips,
 };
