@@ -238,6 +238,22 @@ nav.navbar.bootsnav .navbar-toggle {
 }
 nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 /*.navbar-toggle */
+.navbar-nav .logout-btn {
+  background: none;
+  border: none;
+  padding: 34px 21px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #859098;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s linear;
+}
+
+.navbar-nav .logout-btn:hover,
+.navbar-nav .logout-btn:focus {
+  color: #ff545a;
+}
 
 /*-------------------------------------
         4.  Home
@@ -1492,7 +1508,7 @@ background: #e63037;
 .create-trip-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: goldenrod;
   color: white;
   border-radius: 4px;
   font-size: 16px;
@@ -1539,6 +1555,7 @@ background: #e63037;
   color: #767f86;
   font-size: 20px;
 }
+
 
 /*========================Thank you=================
 

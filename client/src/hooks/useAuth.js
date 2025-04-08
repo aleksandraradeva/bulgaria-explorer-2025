@@ -51,19 +51,15 @@ export function useLogin() {
 // useLogout hook
 export function useLogout() {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
 
     const logout = () => {
         try {
-            setIsLoading(true);
             localStorage.removeItem("accessToken");
-            navigate("/login");
+            navigate("/");
+            console.log("Logout successful!")
         } catch (err) {
             console.log(err.message);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    return { logout, isLoading };
+        } 
+    }
+    return { logout };
 }

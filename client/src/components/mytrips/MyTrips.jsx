@@ -1,8 +1,15 @@
+import { Link } from "react-router-dom";
+
 import { useMyTrips } from "../../hooks/useTrips";
+import { useTripNavigation } from "../../hooks/useTripNavigation";
+import { useDeleteTrip } from "../../hooks/useTrips";
+
 import Spinner from "../spinner/Spinner";
 
 export default function MyTrips() {
     const { myTrips, isLoading } = useMyTrips();
+    const { goToEdit, goToCatalog } = useTripNavigation();
+    const { deleteTrip } = useDeleteTrip();
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -25,8 +32,8 @@ export default function MyTrips() {
             
             {myTrips.length === 0 ? (
                 <div className="no-trips">
-                    <p>You haven't created any trips yet.</p>
-                    <button className="create-trip-btn">Create New Trip</button>
+                    <h2>You haven't created any trips yet.</h2>
+                    <Link to={"/create"} className="create-trip-btn">Create New Trip</Link>
                 </div>
             ) : (
                 myTrips.map((trip) => (
@@ -46,8 +53,12 @@ export default function MyTrips() {
                                 </p>
                             </div>
                             <div className="trip-actions">
-                                <button className="edit-btn">Edit</button>
-                                <button className="delete-btn">Delete</button>
+                                <button className="edit-btn" onClick={() => goToEdit(trip._id)}>Edit</button>
+                                <button className="delete-btn"
+                                onClick={async () => {
+                                    await deleteTrip(trip._id);
+                                    goToCatalog();
+                                }}>Delete</button>
                             </div>
                         </div>
                     </div>

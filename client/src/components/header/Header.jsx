@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useLogout } from "../../hooks/useAuth";
 
 export default function Header() {
+    const { logout } = useLogout();
+
   return (
    
     <section className="top-area">
@@ -24,7 +27,7 @@ export default function Header() {
                             <li className="scroll"><Link to="/trips/mytrips">my trips</Link></li>
                             <li className="scroll"><Link to="/login">login</Link></li>
                             <li className="scroll"><Link to="/register">register</Link></li>
-                            <li className="scroll"><Link to="/logout">logout</Link></li>
+                            <li className="scroll"><button onClick={(logout)} className="logout-btn">logout</button></li>
                         </ul>
                     </div>
                 </div>
