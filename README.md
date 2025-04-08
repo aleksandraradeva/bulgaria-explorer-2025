@@ -38,6 +38,11 @@ SoftUni React Course Project
 - [x] Delete trip (DELETE)
 - [x] Home - How it works
 ## 5. Page Implementation (Private Part: User) & Hooks
-- [] 
+- [x] Add custom hook useAuth
+- [x] Add auth api
+- [] Register
+- [] Login
+## Authentication
+- [] Add Context API 
 ## Error Handling
 - [x] Fetcher API & Trips API
