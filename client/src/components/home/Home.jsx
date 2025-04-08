@@ -19,10 +19,8 @@ export default function Home() {
        
 	    </div>
     </section>
-	<HowItWorks />
+		<HowItWorks />
 	</>
-
-	
 
   );
 };
