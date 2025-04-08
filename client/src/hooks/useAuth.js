@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { registerUser, loginUser } from "../api/auth-api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
-// useRegister hook
+// useRegister Hook
 export function useRegister() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const register = async (email, password) => {
         try {
             setIsLoading(true);
             const { token, user } = await registerUser(email, password);
             localStorage.setItem("accessToken", token);
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // Set the authentication status and user in context
+            setIsAuthenticated(true);
+            setUser(user);
+
+            navigate("/"); // Redirect to home or desired page
             return { user };
         } catch (err) {
             setError(err.message);
@@ -24,10 +35,11 @@ export function useRegister() {
     return { register, error, isLoading };
 }
 
-// useLogin hook
+// useLogin Hook
 export function useLogin() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const login = async (email, password) => {
@@ -35,7 +47,13 @@ export function useLogin() {
             setIsLoading(true);
             const { token, user } = await loginUser(email, password);
             localStorage.setItem("accessToken", token);
-            navigate("/");
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // Set the authentication status and user in context
+            setIsAuthenticated(true);
+            setUser(user);
+
+            navigate("/"); // Redirect to home or desired page
             return { user };
         } catch (err) {
             setError(err.message);
@@ -48,18 +66,26 @@ export function useLogin() {
     return { login, error, isLoading };
 }
 
-// useLogout hook
+// useLogout Hook
 export function useLogout() {
+    const { setIsAuthenticated, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const logout = () => {
         try {
             localStorage.removeItem("accessToken");
-            navigate("/");
-            console.log("Logout successful!")
+            localStorage.removeItem("user");
+
+            // Reset authentication status and user in context
+            setIsAuthenticated(false);
+            setUser(null);
+
+            navigate("/"); // Redirect to home or login page
+            console.log("Successful logout!");
         } catch (err) {
             console.log(err.message);
-        } 
-    }
+        }
+    };
+
     return { logout };
 }
