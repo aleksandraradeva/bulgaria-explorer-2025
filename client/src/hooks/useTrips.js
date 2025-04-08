@@ -101,4 +101,26 @@ export function useDeleteTrip() {
     };
 
     return { deleteTrip, isLoading };
-}
+};
+
+
+export function useMyTrips() {
+    const [myTrips, setMyTrips] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const myTrips = await tripsApi.getMyTrips();
+          setMyTrips(myTrips);
+        } catch (err) {
+          console.log(err.message);
+        } finally {
+          setIsLoading(false);
+        }
+      })();
+    }, []);
+  
+    return { myTrips, isLoading };
+};
