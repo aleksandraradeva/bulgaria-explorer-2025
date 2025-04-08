@@ -78,5 +78,26 @@ router.put('/:id/edit', async (req, res) => {
       res.status(400).json({ error: err.message });
     }
   });
+
+  // GET MY TRIPS
+  router.get('/mytrips', async (req, res) => {
+    try {
+      const authHeader = req.headers.authorization;
+  
+      if (!authHeader) {
+        return res.status(401).json({ error: 'No token provided' });
+      }
+  
+      const token = authHeader.split(' ')[1];
+      const decoded = jwt.verify(token, JWT_SECRET);
+      const userId = decoded.userId;
+  
+      const myTrips = await Trip.find({ author: userId }).sort({ createdAt: -1 });
+  
+      res.status(200).json(myTrips);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
   
   module.exports = router;

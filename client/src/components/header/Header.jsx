@@ -21,6 +21,7 @@ export default function Header() {
                             <li className="scroll"><Link to="/">home</Link></li>
                             <li className="scroll"><Link to="/trips">explore</Link></li>
                             <li className="scroll"><Link to="/trips/create">create trip</Link></li>
+                            <li className="scroll"><Link to="/trips/mytrips">my trips</Link></li>
                             <li className="scroll"><Link to="/login">login</Link></li>
                             <li className="scroll"><Link to="/register">register</Link></li>
                             <li className="scroll"><Link to="/logout">logout</Link></li>
