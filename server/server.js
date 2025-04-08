@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const tripRoutes = require('./routes/trips');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/trips', tripRoutes);
+app.use('/api/users', authRoutes);
 
 // Server Start
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
