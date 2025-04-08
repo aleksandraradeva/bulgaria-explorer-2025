@@ -37,12 +37,22 @@ SoftUni React Course Project
 - [x] Update trip (UPDATE)
 - [x] Delete trip (DELETE)
 - [x] Home - How it works
+- [ ] 404 Page not found
+- [ ] Spinner logic
 ## 5. Page Implementation (Private Part: User) & Hooks
 - [x] Add custom hook useAuth
 - [x] Add auth api
-- [] Register
-- [] Login
-## 6. Authentication
+- [x] Register
+  - [ ] Button "You already have an account": Link to Login
+- [x] Login
+- [ ] Logout
+- [ ] My Trips
+- [ ] Wishlist
+## 8. Manage private and guest status 
+- [x] Connection between trip and author
+- [ ] Nav adjustments for user and guests
+## 7. Authentication
 - [] Add Context API 
-## 7. Error Handling
+## 8. Error Handling
 - [x] Fetcher API & Trips API
+- [ ] Modals and error messaging on UI
