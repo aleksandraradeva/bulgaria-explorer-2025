@@ -48,13 +48,12 @@ async function updateTrip(tripId, tripData) {
 }
 
 //Check, if tripId needed
-async function deleteTrip() {
+async function deleteTrip(tripId) {
     try {
         if (!tripId) {
             throw new Error("Trip Id is required.");
         }
-        const deletedTrip = await fetcher.del(`${BASE_URL}/${tripId}/delete`);
-        return deletedTrip;
+        await fetcher.del(`${BASE_URL}/${tripId}/delete`);
     } catch (error) {
         throw new Error("Failed to delete trip.");
     }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuro, faHeart, faMapPin, faTag } from "@fortawesome/free-solid-svg-icons";
 
+
 export default function TripListItem({
     id,
     name,
