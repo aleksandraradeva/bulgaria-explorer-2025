@@ -10,11 +10,11 @@ async function fetcher(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-        // Add access token to headers if available
-    // const token = localStorage.getItem("accessToken");
-    // if (token) {
-    //     options.headers["X-Authorization"] = token;
-    // }
+    //Add access token to headers if available
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+        options.headers["Authorization"] = `Bearer ${token}`;
+    }
 
     try {
         const response = await fetch(url, options);
