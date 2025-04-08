@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Trip = require('../models/Trip');
 
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = '382159e47565ce0bf47d9f87d598a872b347bf898a5694279e959d1f7c537086';
+
 
 // READ all trips
 router.get('/', async (req, res) => {
@@ -29,13 +32,28 @@ router.get('/:id/details', async (req, res) => {
 
 // CREATE new trip
 router.post('/create', async (req, res) => {
-    try {
-      const newTrip = new Trip(req.body);
-      await newTrip.save();
-      res.status(201).json(newTrip);
-    } catch (err) {
-      res.status(400).json({ error: err.message });
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+      return res.status(401).json({ error: 'No token provided' });
     }
+
+    const token = authHeader.split(' ')[1]; 
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+    const userId = decoded.userId;
+
+    const newTrip = new Trip({
+      ...req.body,
+      author: userId, 
+    });
+
+    await newTrip.save();
+    res.status(201).json(newTrip);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
   });
 
 

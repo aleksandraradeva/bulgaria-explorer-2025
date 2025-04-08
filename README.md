@@ -42,7 +42,7 @@ SoftUni React Course Project
 - [x] Add auth api
 - [] Register
 - [] Login
-## Authentication
+## 6. Authentication
 - [] Add Context API 
-## Error Handling
+## 7. Error Handling
 - [x] Fetcher API & Trips API
