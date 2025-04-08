@@ -7,8 +7,8 @@ SoftUni React Course Project
 - [x] CleanUp client
 - [x] Create server with Node.js and MongoDB
 - [x] Server architecture desicion (without managers and controllers)
-- [x] Create Mongo DB Models (Trip)
-- [x] Add server routes (Trip)
+- [x] Create Mongo DB Models (Trip, User)
+- [x] Add server routes (Trip, User)
 - [x] Convert html to jsx
 - [x] Seperate html into components
 - [] Add project resources (ongoing, don't forget to delete unnecessary assets or css)
@@ -22,7 +22,7 @@ SoftUni React Course Project
 - [x] Abstract requester
 - [x] Add trip api
 - [x] Preseed server data for test
-## 4. Page Implementation & Hooks
+## 4. Page Implementation (CRUD) & Hooks
 - [x] Trip list (Catalog) (READ)
   - [x] Seperate list item logic in components
   - [x] Add Spinner
@@ -34,8 +34,10 @@ SoftUni React Course Project
 - [x] Create trip (CREATE)
   - [x] Add generic form to use for create and edit
   - [x] Add custom hook useForm
-- [ ] Update trip (UPDATE)
-- [ ] Delete trip (DELETE)
-- [] Home - Lates Trips?
+- [x] Update trip (UPDATE)
+- [x] Delete trip (DELETE)
+- [x] Home - How it works
+## 5. Page Implementation (Private Part: User) & Hooks
+- [] 
 ## Error Handling
 - [x] Fetcher API & Trips API
