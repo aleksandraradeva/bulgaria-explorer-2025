@@ -1193,35 +1193,47 @@ background: #e63037;
   
   .favorite-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    top: 20px; /* Abstand vom oberen Rand */
+    right: 20px; /* Abstand vom rechten Rand */
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background-color: #f0f0f0;
     border: none;
-    outline: none;
-  }
-  
-  .favorite-btn svg {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-btn span {
+    white-space: normal; /* Allow the text to wrap */
+    word-wrap: break-word; /* Ensures long words break properly */
+    margin-left: 8px; /* Space between the icon and the text */
+}
+
+.favorite-btn.active {
+    background-color: #ff6b6b; /* Change color when active (optional) */
+}
+
+.favorite-btn .fa-heart {
+    margin-right: 8px; /* Space between the icon and the text */
+}
+
+.favorite-btn svg {
     color: #ccc;
     font-size: 18px;
     transition: all 0.3s ease;
-  }
-  
-  .favorite-btn.active svg {
+}
+
+.favorite-btn.active svg {
     color: #ff5a5f;
-  }
-  
-  .favorite-btn:hover {
+}
+
+.favorite-btn:hover {
     background-color: #fff;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  }
+}
+
   
   /* Content Section */
   .trip-content {

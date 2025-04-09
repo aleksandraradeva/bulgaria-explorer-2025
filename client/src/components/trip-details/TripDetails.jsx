@@ -1,44 +1,38 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faTag, faCalendarAlt, faEuro, faHeart, faArrowLeft, faFlag } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import Spinner from "../spinner/Spinner";
-
-import { useContext } from "react";
 import AuthContext from "../../context/AuthContext.jsx";
+import { useWishlist } from "../../hooks/useWishlist"; // Import the custom hook
 
 export default function TripDetails() {
     const { tripId } = useParams();
     const { trip, isLoading } = useGetOneTrip(tripId);
     const { deleteTrip } = useDeleteTrip(tripId);
-    const [favorite, setFavorite] = useState(false);
     const { goToEdit, goToCatalog } = useTripNavigation();
     const { isAuthenticated, isAuthor } = useContext(AuthContext);
 
+    // Use the custom useWishlist hook
+    const { isInWishlist, addTripToUserWishlist, removeTripFromUserWishlist } = useWishlist(trip?._id, isAuthenticated);
 
-    const toggleFavorite = () => {
-        setFavorite(!favorite);
-    };
+    // Check if the current user is the author of the trip
+    const isCurrentUserAuthor = isAuthenticated && trip?.author && isAuthor(trip?.author);
 
     return isLoading ? (
         <Spinner />
-      ) : trip ? (
+    ) : trip ? (
         <div className="trip-details-page">
             <div className="container">
                 {/* Header Section */}
                 <div className="section-header">
                     <h2>{trip.name}</h2>
                     <div className="trip-meta">
-                        <p className="trip-location">
-                            <FontAwesomeIcon icon={faMapPin} /> {trip.location}
-                        </p>
-                        <div className="trip-category">
-                            <FontAwesomeIcon icon={faTag} /> {trip.category}
-                        </div>
+                        <p className="trip-location">{trip.location}</p>
+                        <div className="trip-category">{trip.category}</div>
                     </div>
                 </div>
 
@@ -48,9 +42,14 @@ export default function TripDetails() {
                     <div className="trip-image">
                         <div className="image-wrapper">
                             <img src={trip.image} alt={trip.name} />
-                            <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={toggleFavorite}>
-                                <FontAwesomeIcon icon={faHeart} />
-                            </button>
+                            {/* Display the heart icon only if the user is authenticated and is NOT the author */}
+                            {!isCurrentUserAuthor && (
+                                <button className={`favorite-btn ${isInWishlist ? "active" : ""}`} 
+                                onClick={isInWishlist ? removeTripFromUserWishlist : addTripToUserWishlist}>
+                                    <FontAwesomeIcon icon={faHeart} />
+                                    <span>{isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</span>
+                                </button>
+                            )}
                         </div>
                     </div>
 
@@ -60,24 +59,6 @@ export default function TripDetails() {
                             <h3>About {trip.name}</h3>
                             <p>{trip.description}</p>
                         </div>
-
-                        {/* Additional Information */}
-                        <div className="additional-info">
-                            <div className="info-item">
-                                <FontAwesomeIcon icon={faCalendarAlt} />
-                                <div className="info-content">
-                                    <strong>Best Time to Visit:</strong>
-                                    <span>{trip.bestTimeToVisit}</span>
-                                </div>
-                            </div>
-                            <div className="info-item">
-                                <FontAwesomeIcon icon={faEuro} />
-                                <div className="info-content">
-                                    <strong>Entrance Fee:</strong>
-                                    <span>{trip.price}</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Action Buttons */}
@@ -86,7 +67,7 @@ export default function TripDetails() {
                             <FontAwesomeIcon icon={faArrowLeft} /> Back to All Trips
                         </button>
 
-                        {/* Display the Edit and Delete buttons only if the user is authenticated and is the author of the trip */}
+                        {/* Display Edit and Delete buttons only if the user is authenticated and is the author of the trip */}
                         {isAuthenticated && trip?.author && isAuthor(trip.author) && (
                             <div className="admin-actions">
                                 <button className="action-btn edit-btn" onClick={() => goToEdit(trip._id)}>
@@ -110,7 +91,6 @@ export default function TripDetails() {
     ) : (
         <div className="no-trips">
             <h2 className="section-header">No trip found!</h2>
-            <FontAwesomeIcon icon={faFlag} size="5x" color="#888" />
         </div>
     );
 }
