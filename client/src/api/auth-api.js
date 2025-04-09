@@ -9,7 +9,7 @@ export async function registerUser(email, password) {
         const { token, user } = result; 
         return { token, user };
     } catch (error) {
-        throw new Error("Registration failed: " + error.message);
+        throw new Error("Registration failed: " + "Email is not unique! Please enter another email.");
     }
 }
 

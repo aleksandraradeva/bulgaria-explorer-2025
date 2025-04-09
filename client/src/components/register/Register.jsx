@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useRegister } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import useRegisterValidation from "../../hooks/validationHooks/useRegisterValidation";
+import ErrorModal from "../common/ErrorModal";
 
 
 export default function Register() {
@@ -12,31 +15,38 @@ export default function Register() {
         confirmPassword: "",
       });
 
+      const [errorMessage, setErrorMessage] = useState(null);
+      const { validate } = useRegisterValidation(formData);
+
       const formSubmitHandler = async (e) => {
         e.preventDefault();
 
-        if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match");
+        const error = validate();
+        if (error) {
+            setErrorMessage(error);
             return;
         }
 
         try {
             const { user, error } = await register(formData.email, formData.password);
             if (error) {
-                console.log(error)
+                setErrorMessage(error);
             } else {
                 resetForm();
                 navigate("/trips"); 
                 console.log("Registration successful!");
             }
         } catch (err) {
-            console.log(err.message);
+            setErrorMessage(err.message);
         }
     };
 
     return (
         <section id="register" className="subscription">
             <div className="container">
+            {errorMessage && (
+                <ErrorModal message={errorMessage} onClose={() => setErrorMessage(null)} />
+            )}
                 <div className="subscribe-title text-center">
                     <h2>Create your account</h2>
                     <p>Become part of Bulgaria's travel tribe - sign up now.</p>

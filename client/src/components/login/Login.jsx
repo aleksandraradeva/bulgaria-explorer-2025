@@ -1,24 +1,35 @@
+import { useState } from "react";
 import { useLogin } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import useLoginValidation from "../../hooks/validationHooks/useLoginValidation";
+import ErrorModal from "../common/ErrorModal";
 
 export default function Login() {
-    const navigate = useNavigate();
-    const { login } = useLogin();
+    const [errorMessage, setErrorMessage] = useState(null);
     
     const { formData, formChangeHandler, resetForm } = useForm({
         email: "",
         password: "",
     });
 
+    const navigate = useNavigate();
+    const { login } = useLogin();
+    const { validate } = useLoginValidation(formData);
+
     const formSubmitHandler = async (e) => {
         e.preventDefault();
+
+        const error = validate();
+        if (error) {
+            setErrorMessage(error);
+            return;
+        }
 
         try {
             const { user, error } = await login(formData.email, formData.password);
             if (error) {
-                console.log(error);
-                alert("Login failed: " + error);
+                setErrorMessage("Invalid email or password!");
             } else {
                 resetForm();
                 navigate("/trips");
@@ -32,6 +43,9 @@ export default function Login() {
     return (
         <section id="login" className="subscription">
             <div className="container">
+            {errorMessage && (
+                <ErrorModal message={errorMessage} onClose={() => setErrorMessage(null)} />
+            )}
                 <div className="subscribe-title text-center">
                     <h2>Login to your account</h2>
                 </div>
