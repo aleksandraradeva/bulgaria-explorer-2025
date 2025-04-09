@@ -48,7 +48,7 @@ export default function HowItWorks() {
                                     <i className="flaticon-location-on-road"></i>
                                 </div>
                                 <h2>
-                                    <Link to="#">
+                                    <Link to={"/trips/mywishlist"}>
                                         3. make <span> your</span> whishlist
                                     </Link>
                                 </h2>
