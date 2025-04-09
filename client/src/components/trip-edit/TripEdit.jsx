@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
 import { useGetOneTrip, useUpdateTrip } from "../../hooks/useTrips";
-import useTripValidation from "../../hooks/useTripValidation";
+import useTripValidation from "../../hooks/validationHooks/useTripValidation";
 
 import TripForm from "../trip-form/TRipForm";
 import Spinner from "../spinner/Spinner";
