@@ -831,6 +831,12 @@ background: #e63037;
 .subscription-input-group:hover .subscription-input-form{
     box-shadow: 0 5px 20px rgba(21,19,19,.4);
 }
+
+.subscription-input-form:focus {
+  outline: none; /* Entfernt den Fokusrahmen */
+  background-color: #fff; /* Ändere den Hintergrund zu Weiß oder einer anderen Farbe */
+  border-color: #ccc; /* Optional: Setze eine benutzerdefinierte Randfarbe */
+}
 /*custom-input-group*/
 
 /*appsLand-btn*/
@@ -1584,13 +1590,14 @@ background: #e63037;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Schwarz mit Transparenz */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Sicherstellen, dass es immer oben ist */
 }
 
+/* Modal Content Styling */
 .modal-content {
   background: white;
   padding: 2rem;
@@ -1599,16 +1606,6 @@ background: #e63037;
   max-width: 400px;
   width: 90%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
 }
 /*========================Thank you=================
 

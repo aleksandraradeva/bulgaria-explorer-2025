@@ -2,7 +2,7 @@ import { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { useCreateTrip } from "../../hooks/useTrips";
 import { useNavigate } from "react-router-dom";
-import useCreateTripValidation from "../../hooks/useFormValidation";
+import useTripValidation from "../../hooks/useTripValidation";
 
 import TripForm from "../trip-form/TRipForm";
 import ErrorModal from "../common/ErrorModal";
@@ -22,7 +22,7 @@ export default function TripCreate() {
 
     const { formData, formChangeHandler, resetForm } = useForm(initialValues);
     const { createTrip } = useCreateTrip();
-    const { validate } = useCreateTripValidation(formData);
+	const { validate } = useTripValidation(formData);
     const navigate = useNavigate();
 
     const formSubmitHandler = async (e) => {
@@ -46,7 +46,7 @@ export default function TripCreate() {
 
     return (
         <div className="form-container">
-            {errorMessage && (
+			    {errorMessage && (
                 <ErrorModal message={errorMessage} onClose={() => setErrorMessage(null)} />
             )}
 			

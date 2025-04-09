@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
 import { useGetOneTrip, useUpdateTrip } from "../../hooks/useTrips";
-import useCreateTripValidation from "../../hooks/useFormValidation";
+import useTripValidation from "../../hooks/useTripValidation";
 
 import TripForm from "../trip-form/TRipForm";
 import Spinner from "../spinner/Spinner";
@@ -24,13 +24,12 @@ export default function TripEdit() {
 
     const { tripId } = useParams();
     const { formData, formChangeHandler, resetForm, populateFormData } = useForm(initialValues);
-    const { validate } = useCreateTripValidation(formData);
+	const { validate } = useTripValidation(formData);
     const navigate = useNavigate();
 
     const { trip, isLoading, error } = useGetOneTrip(tripId);
     const { updateTrip } = useUpdateTrip();
 
-    // When trip is loaded, populate the form
     useEffect(() => {
         if (trip) {
             populateFormData(trip);
@@ -47,7 +46,6 @@ export default function TripEdit() {
         }
 
         try {
-            // Update trip on server
             await updateTrip(tripId, formData);
             navigate(`/trips/${tripId}/details`);
         } catch (err) {
@@ -56,20 +54,20 @@ export default function TripEdit() {
     };
 
     if (isLoading) return <Spinner />;
-
-    if (error) {
-        return <h2 className="section-header">No trip found!</h2>;
-    }
+    if (error) return <h2 className="section-header">No trip found!</h2>;
 
     return (
         <div className="form-container">
-            {errorMessage && 
-			<ErrorModal message={errorMessage} onClose={() => setErrorMessage(null)} />}
+            {errorMessage && (
+                <ErrorModal message={errorMessage} onClose={() => setErrorMessage(null)} />
+            )}
+
             <TripForm 
-				formData={formData} 
-				formChangeHandler={formChangeHandler} 
-				onSubmit={formSubmitHandler} 
-				submitLabel="Edit" />
+                formData={formData}
+                formChangeHandler={formChangeHandler}
+                onSubmit={formSubmitHandler}
+                submitLabel="Edit"
+            />
         </div>
     );
 }
