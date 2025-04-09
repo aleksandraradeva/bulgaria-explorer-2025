@@ -11,7 +11,7 @@ export default function MyTrips() {
     const { myTrips, isLoading } = useMyTrips();
     const { goToEdit, goToCatalog } = useTripNavigation();
     const { deleteTrip } = useDeleteTrip();
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [showConfirmModal, setShowConfirmModal] = useState(null); 
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -55,19 +55,21 @@ export default function MyTrips() {
                                 <button className="edit-btn" onClick={() => goToEdit(trip._id)}>
                                     Edit
                                 </button>
-                                <button className="delete-btn" onClick={() => setShowConfirmModal(true)}>
+                                <button className="delete-btn" onClick={() => setShowConfirmModal(trip._id)}>
                                     Delete
                                 </button>
                             </div>
-                            {showConfirmModal && (
+
+                            {/* Modal */}
+                            {showConfirmModal === trip._id && (
                                 <ConfirmModal
                                     message="Are you sure you want to delete this trip?"
                                     onConfirm={async () => {
                                         await deleteTrip(trip._id);
-                                        setShowConfirmModal(false);
+                                        setShowConfirmModal(null); 
                                         goToCatalog();
                                     }}
-                                    onCancel={() => setShowConfirmModal(false)}
+                                    onCancel={() => setShowConfirmModal(null)}
                                 />
                             )}
                         </div>
