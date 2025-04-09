@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Trip = require('../models/Trip');
+const User = require('../models/User');
 
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = '382159e47565ce0bf47d9f87d598a872b347bf898a5694279e959d1f7c537086';
@@ -99,5 +100,33 @@ router.put('/:id/edit', async (req, res) => {
       res.status(400).json({ error: err.message });
     }
   });
+
   
+  // GET MY WISHLIST TRIPS
+  router.get('/mywishlist', async (req, res) => {
+    try {
+      const authHeader = req.headers.authorization;
+  
+      if (!authHeader) {
+        return res.status(401).json({ error: 'No token provided' });
+      }
+  
+      const token = authHeader.split(' ')[1];
+      const decoded = jwt.verify(token, JWT_SECRET);
+      const userId = decoded.userId;
+  
+      
+      const user = await User.findById(userId).populate('wishlist'); 
+  
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      res.status(200).json(user.wishlist);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
+  
+
   module.exports = router;

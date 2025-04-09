@@ -124,3 +124,25 @@ export function useMyTrips() {
   
     return { myTrips, isLoading };
 };
+
+
+export function useMyWishlist() {
+    const [myWishlist, setMyWishlist] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      (async () => {
+        try {
+          setIsLoading(true);
+          const myWishlist = await tripsApi.getMyWishlist();
+          setMyWishlist(myWishlist);
+        } catch (err) {
+          console.log(err.message);
+        } finally {
+          setIsLoading(false);
+        }
+      })();
+    }, []);
+  
+    return { myWishlist, isLoading };
+};

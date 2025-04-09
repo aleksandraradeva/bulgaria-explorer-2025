@@ -68,6 +68,15 @@ async function getMyTrips() {
     }
 };
 
+async function getMyWishlist() {
+    try {
+      const myWishlist = await fetcher.get(`${BASE_URL}/mywishlist`);
+      return myWishlist;
+    } catch (error) {
+      throw new Error("Failed to fetch user's wishlist.");
+    }
+};
+
 export default {
     getAllTrips,
     getOneTrip,
@@ -75,4 +84,5 @@ export default {
     updateTrip,
     deleteTrip,
     getMyTrips,
+    getMyWishlist,
 };

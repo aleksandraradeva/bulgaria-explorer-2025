@@ -6,6 +6,7 @@ const tripRoutes = require('./routes/trips');
 const authRoutes = require('./routes/auth');
 const wishlistRoutes = require('./routes/wishlist');
 
+
 const app = express();
 const PORT = 3000;
 
