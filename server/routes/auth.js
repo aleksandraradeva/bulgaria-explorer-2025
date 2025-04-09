@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
     });
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '2d' });
-    res.status(201).json({ token, user: { email: user.email } });
+    res.status(201).json({ token, user: { _id: user._id, email: user.email } });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '2d' });
-    res.status(200).json({ token, user: { email: user.email } });
+    res.status(200).json({ token, user: { _id: user._id, email: user.email } });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

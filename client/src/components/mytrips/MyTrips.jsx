@@ -33,7 +33,7 @@ export default function MyTrips() {
             {myTrips.length === 0 ? (
                 <div className="no-trips">
                     <h2>You haven't created any trips yet.</h2>
-                    <Link to={"/create"} className="create-trip-btn">Create New Trip</Link>
+                    <Link to={"/trips/create"} className="create-trip-btn">Create New Trip</Link>
                 </div>
             ) : (
                 myTrips.map((trip) => (

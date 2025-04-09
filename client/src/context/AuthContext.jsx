@@ -15,13 +15,17 @@ export const AuthProvider = ({ children }) => {
         setUser(JSON.parse(storedUser)); 
         setIsAuthenticated(true); 
       } catch (err) {
-        console.error("Fehler beim Laden des Benutzers aus dem localStorage:", err);
+        console.error(err);
       }
     }
   }, []);
 
+  const isAuthor = (tripAuthorId) => {
+    return user?._id?.toString() === tripAuthorId?.toString();
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser, isAuthor }}>
       {children}
     </AuthContext.Provider>
   );

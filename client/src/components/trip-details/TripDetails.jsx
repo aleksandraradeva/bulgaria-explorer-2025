@@ -8,12 +8,17 @@ import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import Spinner from "../spinner/Spinner";
 
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext.jsx";
+
 export default function TripDetails() {
     const { tripId } = useParams();
     const { trip, isLoading } = useGetOneTrip(tripId);
     const { deleteTrip } = useDeleteTrip(tripId);
     const [favorite, setFavorite] = useState(false);
     const { goToEdit, goToCatalog } = useTripNavigation();
+    const { isAuthenticated, isAuthor } = useContext(AuthContext);
+
 
     const toggleFavorite = () => {
         setFavorite(!favorite);
@@ -21,7 +26,7 @@ export default function TripDetails() {
 
     return isLoading ? (
         <Spinner />
-    ) : trip ? (
+      ) : trip ? (
         <div className="trip-details-page">
             <div className="container">
                 {/* Header Section */}
@@ -80,20 +85,24 @@ export default function TripDetails() {
                         <button className="action-btn back-btn" onClick={() => goToCatalog()}>
                             <FontAwesomeIcon icon={faArrowLeft} /> Back to All Trips
                         </button>
-                        <div className="admin-actions">
-                            <button className="action-btn edit-btn" onClick={() => goToEdit(trip._id)}>
-                                Edit
-                            </button>
-                            <button
-                                className="action-btn delete-btn"
-                                onClick={async () => {
-                                    await deleteTrip(trip._id);
-                                    goToCatalog();
-                                }}
-                            >
-                                Delete
-                            </button>
-                        </div>
+
+                        {/* Display the Edit and Delete buttons only if the user is authenticated and is the author of the trip */}
+                        {isAuthenticated && trip?.author && isAuthor(trip.author) && (
+                            <div className="admin-actions">
+                                <button className="action-btn edit-btn" onClick={() => goToEdit(trip._id)}>
+                                    Edit
+                                </button>
+                                <button
+                                    className="action-btn delete-btn"
+                                    onClick={async () => {
+                                        await deleteTrip(trip._id);
+                                        goToCatalog();
+                                    }}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
