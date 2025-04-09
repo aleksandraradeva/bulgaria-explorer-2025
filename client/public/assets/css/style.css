@@ -634,10 +634,12 @@ a.close-btn:active {
 
 .no-trips {
   text-align: center;
-  padding: 70px 20px;
+  padding: 40px 20px; /* Weniger Padding, um mehr Platz zu sparen */
   background: white;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Milderer Schatten */
+  width: 100%; /* Sicherstellen, dass der Container die volle Breite nutzt */
+  box-sizing: border-box; /* Um sicherzustellen, dass Padding nicht die Breite beeinflusst */
 }
 
 
@@ -1562,18 +1564,28 @@ a.close-btn:active {
 }
 
 .create-trip-btn {
-  margin-top: 20px;
+  display: inline-block;
   padding: 10px 20px;
   background-color: goldenrod;
   color: white;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none; /* Entfernt die Standard-Link-Unterstreichung */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Sanfte Übergänge für Farbe und Schatten */
 }
 
+/* Hover-Effekt */
 .create-trip-btn:hover {
-  background-color: #0056b3;
+  background-color: goldenrod; /* Farbänderung beim Hover */
 }
+
+/* Active-Effekt */
+.create-trip-btn:active {
+  background-color: goldenrod; /* Farbänderung beim Klicken */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2); /* Innerer Schatten bei Klick */
+  outline: none; /* Entfernt den Fokusrahmen */
+}
+
 
 .trip-thumbnail-container {
   width: 100px;          
