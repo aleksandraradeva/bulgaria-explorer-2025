@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const tripRoutes = require('./routes/trips');
 const authRoutes = require('./routes/auth');
+const wishlistRoutes = require('./routes/wishlist');
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/trips', tripRoutes);
 app.use('/api/users', authRoutes);
+app.use('/api/wishlist', wishlistRoutes);
 
 // Server Start
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
