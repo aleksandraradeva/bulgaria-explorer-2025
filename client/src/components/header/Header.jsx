@@ -32,6 +32,7 @@ export default function Header() {
                                 <>
                                     <li className="scroll"><Link to="/trips/create">create trip</Link></li>
                                     <li className="scroll"><Link to="/trips/mytrips">my trips</Link></li>
+                                    <li className="scroll"><Link to="trips/mywishlist">my wishlist</Link></li>
                                     {/* Logout button */}
                                     <li className="scroll">
                                         <button onClick={logout} className="logout-btn">logout</button>
