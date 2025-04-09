@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faArrowLeft, faTag, faMapPin, faCalendarAlt, faEuro } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
@@ -31,8 +31,12 @@ export default function TripDetails() {
                 <div className="section-header">
                     <h2>{trip.name}</h2>
                     <div className="trip-meta">
-                        <p className="trip-location">{trip.location}</p>
-                        <div className="trip-category">{trip.category}</div>
+                        <p className="trip-location">
+                            <FontAwesomeIcon icon={faMapPin} /> {trip.location}
+                        </p>
+                        <div className="trip-category">
+                            <FontAwesomeIcon icon={faTag} /> {trip.category}
+                        </div>
                     </div>
                 </div>
 
@@ -43,9 +47,8 @@ export default function TripDetails() {
                         <div className="image-wrapper">
                             <img src={trip.image} alt={trip.name} />
                             {/* Display the heart icon only if the user is authenticated and is NOT the author */}
-                            {!isCurrentUserAuthor && (
-                                <button className={`favorite-btn ${isInWishlist ? "active" : ""}`} 
-                                onClick={isInWishlist ? removeTripFromUserWishlist : addTripToUserWishlist}>
+                            {!isCurrentUserAuthor && isAuthenticated && (
+                                <button className={`favorite-btn ${isInWishlist ? "active" : ""}`} onClick={isInWishlist ? removeTripFromUserWishlist : addTripToUserWishlist}>
                                     <FontAwesomeIcon icon={faHeart} />
                                     <span>{isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</span>
                                 </button>
@@ -58,6 +61,24 @@ export default function TripDetails() {
                         <div className="trip-description">
                             <h3>About {trip.name}</h3>
                             <p>{trip.description}</p>
+                        </div>
+                    </div>
+
+                    {/* Additional Information */}
+                    <div className="additional-info">
+                        <div className="info-item">
+                            <FontAwesomeIcon icon={faCalendarAlt} />
+                            <div className="info-content">
+                                <strong>Best Time to Visit:</strong>
+                                <span>{trip.bestTimeToVisit}</span>
+                            </div>
+                        </div>
+                        <div className="info-item">
+                            <FontAwesomeIcon icon={faEuro} />
+                            <div className="info-content">
+                                <strong>Entrance Fee:</strong>
+                                <span>{trip.price}</span>
+                            </div>
                         </div>
                     </div>
 
