@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faArrowLeft, faTag, faMapPin, faCalendarAlt, faEuro } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
+import { useWishlist } from "../../hooks/useWishlist.js";
 
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import Spinner from "../spinner/Spinner";
 import AuthContext from "../../context/AuthContext.jsx";
-import { useWishlist } from "../../hooks/useWishlist"; // Import the custom hook
+
+import ConfirmModal from "../common/ConfirmModal";
 
 export default function TripDetails() {
     const { tripId } = useParams();
@@ -16,11 +18,17 @@ export default function TripDetails() {
     const { goToEdit, goToCatalog } = useTripNavigation();
     const { isAuthenticated, isAuthor } = useContext(AuthContext);
 
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
     // Use the custom useWishlist hook
     const { isInWishlist, addTripToUserWishlist, removeTripFromUserWishlist } = useWishlist(trip?._id, isAuthenticated);
 
     // Check if the current user is the author of the trip
     const isCurrentUserAuthor = isAuthenticated && trip?.author && isAuthor(trip?.author);
+
+    const toggleFavorite = () => {
+        setFavorite(!favorite);
+    };
 
     return isLoading ? (
         <Spinner />
@@ -96,14 +104,22 @@ export default function TripDetails() {
                                 </button>
                                 <button
                                     className="action-btn delete-btn"
-                                    onClick={async () => {
-                                        await deleteTrip(trip._id);
-                                        goToCatalog();
-                                    }}
+                                    onClick={() => setShowConfirmModal(true)}
                                 >
                                     Delete
                                 </button>
                             </div>
+                        )}
+                        {showConfirmModal && (
+                            <ConfirmModal
+                                message="Are you sure you want to delete this trip?"
+                                onConfirm={async () => {
+                                    await deleteTrip(trip._id);
+                                    setShowConfirmModal(false);
+                                    goToCatalog();
+                                }}
+                                onCancel={() => setShowConfirmModal(false)}
+                            />
                         )}
                     </div>
                 </div>
