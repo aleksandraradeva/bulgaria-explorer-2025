@@ -36,7 +36,7 @@ router.post('/:tripId/add', async (req, res) => {
   }
 });
 
-// Trip von der Wishlist entfernen
+// Remove trip from wishlist
 router.post('/:tripId/remove', async (req, res) => {
   try {
     const userId = verifyToken(req);
@@ -55,17 +55,5 @@ router.post('/:tripId/remove', async (req, res) => {
   }
 });
 
-
-// Wishlist eines Users abrufen
-router.get('/', async (req, res) => {
-  try {
-    const userId = verifyToken(req);
-
-    const user = await User.findById(userId).populate('wishlist');
-    res.json(user.wishlist);
-  } catch (err) {
-    res.status(401).json({ message: err.message });
-  }
-});
 
 module.exports = router;
