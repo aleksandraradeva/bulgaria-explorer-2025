@@ -63,7 +63,10 @@ export default function MyWishlist() {
                                         borderRadius: "0.5rem",
                                         borderLeft: "10px solid #ff5a5f",
                                         color: "#374151",
-                                        lineHeight: "1.625",
+                                        lineHeight: "1.6",
+                                        wordWrap: "break-word",
+                                        maxWidth: "50ch", // Wrap after ~25 characters
+                                        overflowWrap: "break-word",
                                     }}
                                 >
                                     "{trip.description}"
