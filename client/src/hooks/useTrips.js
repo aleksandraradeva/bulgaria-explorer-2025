@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import tripsApi from "../api/trips-api";
 
 export function useGetAllTrips() {

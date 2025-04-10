@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { registerUser, loginUser } from "../api/auth-api";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { registerUser, loginUser } from "../api/auth-api";
+
 import AuthContext from "../context/AuthContext";
 
 // useRegister Hook
@@ -18,11 +20,11 @@ export function useRegister() {
             localStorage.setItem("accessToken", token);
             localStorage.setItem("user", JSON.stringify(user));
 
-            // Set the authentication status and user in context
+            
             setIsAuthenticated(true);
             setUser(user);
 
-            navigate("/"); // Redirect to home or desired page
+            navigate("/"); 
             return { user };
         } catch (err) {
             setError(err.message);
@@ -49,11 +51,11 @@ export function useLogin() {
             localStorage.setItem("accessToken", token);
             localStorage.setItem("user", JSON.stringify(user));
 
-            // Set the authentication status and user in context
+           
             setIsAuthenticated(true);
             setUser(user);
 
-            navigate("/"); // Redirect to home or desired page
+            navigate("/"); 
             return { user };
         } catch (err) {
             setError(err.message);
@@ -76,11 +78,10 @@ export function useLogout() {
             localStorage.removeItem("accessToken");
             localStorage.removeItem("user");
 
-            // Reset authentication status and user in context
             setIsAuthenticated(false);
             setUser(null);
 
-            navigate("/"); // Redirect to home or login page
+            navigate("/"); 
             console.log("Successful logout!");
         } catch (err) {
             console.log(err.message);
