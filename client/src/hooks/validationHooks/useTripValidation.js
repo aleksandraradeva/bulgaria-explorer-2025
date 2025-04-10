@@ -12,6 +12,18 @@ export default function useTripValidation(formData) {
             return "Description must be at least 20 characters long.";
         }
 
+        if (formData.name.length < 3) {
+            return "Name must be at least 3 characters long.";
+        }
+
+        if (formData.location.length < 3) {
+            return "Location must be at least 3 characters long.";
+        }
+
+        if (formData.bestTimeToVisit.length < 3) {
+            return "Location must be at least 3 characters long.";
+        }
+
         if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(formData.image)) {
             return "Please enter a valid image URL.";
         }
