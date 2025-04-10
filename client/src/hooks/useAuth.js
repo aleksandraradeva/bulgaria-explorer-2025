@@ -91,7 +91,7 @@ export function useLogout() {
 
             setWishlist([]);
 
-            navigate("/"); 
+            navigate("/login"); 
             console.log("Successful logout!");
         } catch (err) {
             console.log(err.message);
