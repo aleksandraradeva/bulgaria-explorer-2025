@@ -12,7 +12,7 @@ font-family: 'Roboto', sans-serif;
 5.  List-topics
 6.  Works  
 7.  Explore
-
+11. Subscribe
 12. Footer
 13. Create form
 14. Edit form
@@ -638,6 +638,107 @@ a.close-btn:active {
   width: 100%; /* Sicherstellen, dass der Container die volle Breite nutzt */
   box-sizing: border-box; /* Um sicherzustellen, dass Padding nicht die Breite beeinflusst */
 }
+
+
+
+/*-------------------------------------
+        11. Subscribe
+--------------------------------------*/
+.subscription{
+  background: #f8fafb;
+  padding:150px 0;
+}
+/*subscribe-title*/
+.subscribe-title {margin-bottom: 52px;}
+
+.subscribe-title h2{
+  font-size:24px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.subscribe-title p{
+  color:#7b8088;
+  font-size:16px;
+  font-weight: 500;
+  margin-top: 28px;
+}/*subscribe-title*/
+
+
+/*custom-input-group*/
+.subscription-input-group {
+  position: relative;
+  text-align: center;
+  max-width: 630px;
+  margin:0 auto;
+}
+
+.subscription-input-group .subscription-input-form{
+  display: inline-block;
+  width: 630px;
+  height: 60px;
+  padding-left:30px;
+  font-size: 16px;
+  color: #a5adb3;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  border:1px solid #fff;
+  box-shadow: 0 0px 10px rgba(21,19,19,.1);
+   -webkit-transition:0.3s linear;
+  -moz-transition:0.3s linear;
+  -o-transition:0.3s linear;
+  transition:0.3s linear;
+}
+.subscription-input-group:hover .subscription-input-form{
+  box-shadow: 0 5px 20px rgba(21,19,19,.4);
+}
+/*custom-input-group*/
+
+/*appsLand-btn*/
+.appsLand-btn {
+  background: #ff545a;
+  display: inline-block;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+  text-decoration: none;
+  border-radius: 3px;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Hover-Effekte */
+.appsLand-btn:hover,
+.appsLand-btn:focus,
+.appsLand-btn:active {
+  text-decoration: none;
+  outline: none;
+}
+
+.appsLand-btn:hover {
+  box-shadow: 0 5px 10px rgba(71, 71, 71, 0.4);
+  background: #f43032;
+}
+
+/* Neue Klasse für Button Container */
+.button-container {
+  display: flex;
+  justify-content: center; /* Zentrieren der Buttons */
+  margin-top: 20px; /* Abstand nach oben */
+}
+
+/* Falls du mehrere Buttons hast und sie nebeneinander anordnen willst */
+.button-container button {
+  margin: 0 10px; /* Abstand zwischen mehreren Buttons */
+}
+/*appsLand-btn*/
 
 
 /*-------------------------------------

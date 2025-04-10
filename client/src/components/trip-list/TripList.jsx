@@ -36,6 +36,7 @@ export default function TripList() {
                                     location={trip.location}
                                     category={trip.category}
                                     price={trip.price}
+                                    authorId={trip.author}
                                 />
                             ))
                         ) : (

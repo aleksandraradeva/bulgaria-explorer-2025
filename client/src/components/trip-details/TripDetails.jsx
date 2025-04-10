@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faArrowLeft, faTag, faMapPin, faCalendarAlt, faEuro } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 
-
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import Spinner from "../spinner/Spinner";
@@ -21,7 +20,6 @@ export default function TripDetails() {
 
     const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-
     const { isInWishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
     // Check if the current user is the author of the trip
@@ -32,11 +30,11 @@ export default function TripDetails() {
     };
 
     const wishListClickHandler = () => {
-      if (isInWishlist(trip._id)) {
-        removeFromWishlist(trip._id);
-      } else {
-        addToWishlist(trip._id);
-      }
+        if (isInWishlist(trip._id)) {
+            removeFromWishlist(trip._id);
+        } else {
+            addToWishlist(trip._id);
+        }
     };
 
     return isLoading ? (
@@ -65,13 +63,10 @@ export default function TripDetails() {
                             <img src={trip.image} alt={trip.name} />
                             {/* Display the heart icon only if the user is authenticated and is NOT the author */}
                             {!isCurrentUserAuthor && isAuthenticated && (
-  <button
-    className={`favorite-btn ${isInWishlist(trip._id) ? "active" : ""}`}
-    onClick={wishListClickHandler}
-  >
-    <FontAwesomeIcon icon={faHeart} />
-    <span>{isInWishlist(trip._id) ? "Remove from Wishlist" : "Add to Wishlist"}</span>
-  </button>
+                                <button className={`favorite-btn ${isInWishlist(trip._id) ? "active" : ""}`} onClick={wishListClickHandler}>
+                                    <FontAwesomeIcon icon={faHeart} />
+                                    <span>{isInWishlist(trip._id) ? "Remove from Wishlist" : "Add to Wishlist"}</span>
+                                </button>
                             )}
                         </div>
                     </div>
@@ -114,10 +109,7 @@ export default function TripDetails() {
                                 <button className="action-btn edit-btn" onClick={() => goToEdit(trip._id)}>
                                     Edit
                                 </button>
-                                <button
-                                    className="action-btn delete-btn"
-                                    onClick={() => setShowConfirmModal(true)}
-                                >
+                                <button className="action-btn delete-btn" onClick={() => setShowConfirmModal(true)}>
                                     Delete
                                 </button>
                             </div>
