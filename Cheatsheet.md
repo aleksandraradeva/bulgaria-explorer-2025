@@ -57,3 +57,4 @@ SoftUni React Course Project
 ## 8. Error Handling
 - [x] Fetcher API & Trips API
 - [x] Modals and error messaging on UI
+- [x] Testing the whole functionality
