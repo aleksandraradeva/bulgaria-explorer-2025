@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser } from "../api/auth-api";
 
 import AuthContext from "../context/AuthContext";
+import WishlistContext from "../context/WishlistContext";
 
 // useRegister Hook
 export function useRegister() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { fetchWishlist } = useContext(WishlistContext); 
     const navigate = useNavigate();
 
     const register = async (email, password) => {
@@ -23,6 +25,8 @@ export function useRegister() {
             
             setIsAuthenticated(true);
             setUser(user);
+
+            await fetchWishlist();
 
             navigate("/"); 
             return { user };
@@ -42,6 +46,7 @@ export function useLogin() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { fetchWishlist } = useContext(WishlistContext); 
     const navigate = useNavigate();
 
     const login = async (email, password) => {
@@ -54,6 +59,8 @@ export function useLogin() {
            
             setIsAuthenticated(true);
             setUser(user);
+
+            await fetchWishlist();
 
             navigate("/"); 
             return { user };
@@ -71,6 +78,7 @@ export function useLogin() {
 // useLogout Hook
 export function useLogout() {
     const { setIsAuthenticated, setUser } = useContext(AuthContext);
+    const { setWishlist } = useContext(WishlistContext);
     const navigate = useNavigate();
 
     const logout = () => {
@@ -81,7 +89,9 @@ export function useLogout() {
             setIsAuthenticated(false);
             setUser(null);
 
-            navigate("/login"); 
+            setWishlist([]);
+
+            navigate("/"); 
             console.log("Successful logout!");
         } catch (err) {
             console.log(err.message);

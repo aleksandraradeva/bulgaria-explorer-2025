@@ -38,12 +38,16 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
+
   useEffect(() => {
-    fetchWishlist();
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetchWishlist();
+    }
   }, []);
 
   return (
-    <WishlistContext.Provider value={{ wishlist, isInWishlist, addToWishlist, removeFromWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, isInWishlist, addToWishlist, removeFromWishlist, fetchWishlist, setWishlist }}>
       {children}
     </WishlistContext.Provider>
   );
