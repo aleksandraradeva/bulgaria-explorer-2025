@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useMyWishlist } from "../../hooks/useTrips";
-import {useWishlist} from "../../hooks/useWishlist"
 
 import Spinner from "../spinner/Spinner";
 
 export default function MyWishlist() {
     const { myWishlist, isLoading } = useMyWishlist();
-    const {removeTripFromUserWishlist} = useWishlist();
     console.log(myWishlist)
 
     const formatDate = (dateString) => {

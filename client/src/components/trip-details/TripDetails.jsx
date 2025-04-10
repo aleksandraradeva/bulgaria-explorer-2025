@@ -2,12 +2,13 @@ import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faArrowLeft, faTag, faMapPin, faCalendarAlt, faEuro } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-import { useWishlist } from "../../hooks/useWishlist.js";
+
 
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import Spinner from "../spinner/Spinner";
 import AuthContext from "../../context/AuthContext.jsx";
+import WishlistContext from "../../context/WishlistContext.jsx";
 
 import ConfirmModal from "../common/ConfirmModal";
 
@@ -20,14 +21,22 @@ export default function TripDetails() {
 
     const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-    // Use the custom useWishlist hook
-    const { isInWishlist, addTripToUserWishlist, removeTripFromUserWishlist } = useWishlist(trip?._id, isAuthenticated);
+
+    const { isInWishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
     // Check if the current user is the author of the trip
     const isCurrentUserAuthor = isAuthenticated && trip?.author && isAuthor(trip?.author);
 
     const toggleFavorite = () => {
         setFavorite(!favorite);
+    };
+
+    const wishListClickHandler = () => {
+      if (isInWishlist(trip._id)) {
+        removeFromWishlist(trip._id);
+      } else {
+        addToWishlist(trip._id);
+      }
     };
 
     return isLoading ? (
@@ -56,10 +65,13 @@ export default function TripDetails() {
                             <img src={trip.image} alt={trip.name} />
                             {/* Display the heart icon only if the user is authenticated and is NOT the author */}
                             {!isCurrentUserAuthor && isAuthenticated && (
-                                <button className={`favorite-btn ${isInWishlist ? "active" : ""}`} onClick={isInWishlist ? removeTripFromUserWishlist : addTripToUserWishlist}>
-                                    <FontAwesomeIcon icon={faHeart} />
-                                    <span>{isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}</span>
-                                </button>
+  <button
+    className={`favorite-btn ${isInWishlist(trip._id) ? "active" : ""}`}
+    onClick={wishListClickHandler}
+  >
+    <FontAwesomeIcon icon={faHeart} />
+    <span>{isInWishlist(trip._id) ? "Remove from Wishlist" : "Add to Wishlist"}</span>
+  </button>
                             )}
                         </div>
                     </div>

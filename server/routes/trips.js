@@ -101,7 +101,7 @@ router.put('/:id/edit', async (req, res) => {
     }
   });
 
-  
+
   // GET MY WISHLIST TRIPS
   router.get('/mywishlist', async (req, res) => {
     try {

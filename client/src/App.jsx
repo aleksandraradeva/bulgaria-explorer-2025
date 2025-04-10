@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from './context/AuthContext';
+import { WishlistProvider } from "./context/WishlistContext";
 
 import PrivateRoute from "./guards/PrivateRoute";
 import GuestRoute from "./guards/GuestRoute";
@@ -19,7 +20,8 @@ import NotFound from "./components/not-found/NotFound";
 
 function App() {
     return (
-      <AuthProvider> 
+      <AuthProvider>
+        <WishlistProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -66,6 +68,7 @@ function App() {
             </Routes>
 
             <Footer />
+            </WishlistProvider> 
         </AuthProvider>
     );
 }

@@ -55,5 +55,14 @@ router.post('/:tripId/remove', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const userId = verifyToken(req);
+    const user = await User.findById(userId).populate('wishlist');
+    res.json(user.wishlist);
+  } catch (err) {
+    res.status(401).json({ message: err.message });
+  }
+});
 
 module.exports = router;
