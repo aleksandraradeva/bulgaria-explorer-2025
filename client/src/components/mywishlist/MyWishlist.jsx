@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { useMyWishlist } from "../../hooks/useTrips";
+import WishlistContext from "../../context/WishlistContext";
 
 import Spinner from "../spinner/Spinner";
 
 export default function MyWishlist() {
-    const { myWishlist, isLoading } = useMyWishlist();
-    console.log(myWishlist)
+    const { wishlist, removeFromWishlist } = useContext(WishlistContext);
+    const isLoading = !wishlist;
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -24,15 +24,15 @@ export default function MyWishlist() {
 
     return (
         <div className="my-wishlist-page">
-            {myWishlist.length === 0 ? (
+            {wishlist.length === 0 ? (
                 <div className="no-wishlist">
                     <h2>You haven't added any trips to your wishlist yet.</h2>
-                    <Link to={"/trips"} className="browse-trips-btn">
+                    <Link to={"/trips"} className="empty-btn">
                         Explore Trips
                     </Link>
                 </div>
             ) : (
-                myWishlist.map((trip) => (
+                wishlist.map((trip) => (
                     <div key={trip._id} className="my-trip-card">
                         <div className="trip-header">
                             <div className="trip-thumbnail-container">
@@ -48,7 +48,7 @@ export default function MyWishlist() {
                                 {/* Add the "Remove from Wishlist" button */}
                                 <button
                                     className="remove-btn"
-                                    onClick={() => removeTripFromUserWishlist(trip._id)}
+                                    onClick={() => removeFromWishlist(trip._id)}
                                 >
                                     <FontAwesomeIcon icon={faHeart} />
                                     Remove from Wishlist

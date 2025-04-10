@@ -34,7 +34,7 @@ export default function MyTrips() {
             {myTrips.length === 0 ? (
                 <div className="no-trips">
                     <h2>You haven't created any trips yet.</h2>
-                    <Link to={"/trips/create"} className="create-trip-btn">
+                    <Link to={"/trips/create"} className="empty-btn">
                         Create New Trip
                     </Link>
                 </div>
