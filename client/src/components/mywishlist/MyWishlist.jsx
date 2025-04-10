@@ -19,7 +19,6 @@ export default function MyWishlist() {
         }).format(date);
     };
 
-    
     if (isLoading) return <Spinner />;
 
     return (
@@ -40,16 +39,37 @@ export default function MyWishlist() {
                             </div>
                             <div>
                                 <h3 className="trip-name">{trip.name}</h3>
-                                <p className="trip-date">
-                                    Added on {formatDate(trip.createdAt)}
+                                <p className="trip-date">Added on {formatDate(trip.createdAt)}</p>
+                                <p
+                                    className="trip-date"
+                                    style={{
+                                        fontWeight: "bold",
+                                        fontSize: "1.125rem",
+                                        color: "#ff5a5f",
+                                        marginBottom: "1rem",
+                                    }}
+                                >
+                                    ✨ Why BulgariaExplorer adventurers LOVE this destination! ✨
+                                </p>
+
+                                <p
+                                    className="trip-description"
+                                    style={{
+                                        fontStyle: "italic",
+                                        backgroundColor: "#eff6ff",
+                                        padding: "0.75rem",
+                                        borderRadius: "0.5rem",
+                                        borderLeft: "10px solid #ee7571",
+                                        color: "#374151",
+                                        lineHeight: "1.625",
+                                    }}
+                                >
+                                    "{trip.description}"
                                 </p>
                             </div>
                             <div className="trip-actions">
                                 {/* Add the "Remove from Wishlist" button */}
-                                <button
-                                    className="remove-btn"
-                                    onClick={() => removeFromWishlist(trip._id)}
-                                >
+                                <button className="remove-btn" onClick={() => removeFromWishlist(trip._id)}>
                                     <FontAwesomeIcon icon={faHeart} />
                                     Remove from Wishlist
                                 </button>
