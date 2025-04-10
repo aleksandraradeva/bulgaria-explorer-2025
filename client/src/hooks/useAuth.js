@@ -81,7 +81,7 @@ export function useLogout() {
             setIsAuthenticated(false);
             setUser(null);
 
-            navigate("/"); 
+            navigate("/login"); 
             console.log("Successful logout!");
         } catch (err) {
             console.log(err.message);
