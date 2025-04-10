@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+
 import { AuthProvider } from './context/AuthContext';
 import { WishlistProvider } from "./context/WishlistContext";
 
@@ -17,6 +18,7 @@ import TripEdit from "./components/trip-edit/TripEdit";
 import MyTrips from "./components/mytrips/MyTrips";
 import MyWishlist from "./components/mywishlist/MyWishList";
 import NotFound from "./components/not-found/NotFound";
+
 
 function App() {
     return (

@@ -1,4 +1,5 @@
 export default function TripForm({ formData, formChangeHandler, onSubmit, submitLabel }) {
+    
     return (
         <div className="form-container">
         <form className="create-form" onSubmit={onSubmit}>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import HowItWorks from "./how-it-works/HowItWorks"
 
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
        
 	    </div>
     </section>
-		<HowItWorks />
+			<HowItWorks />
 	</>
 
   );

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuro, faHeart, faMapPin, faTag } from "@fortawesome/free-solid-svg-icons";
@@ -27,26 +27,21 @@ export default function TripListItem({ id, name, image, location, category, pric
                 {/* Image Section */}
                 <div className="single-explore-img">
                     <img src={image} alt="Trip Image" />
-                                {/* Wishlist Button */}
-                                {isAuthenticated && !isCurrentUserAuthor && (
-                        <button 
-                            className={`favorite-btn ${isInWishlist(id) ? "active" : ""}`} 
-                            onClick={wishlistClickHandler}
-                        >
+                    {/* Wishlist Button */}
+                    {isAuthenticated && !isCurrentUserAuthor && (
+                        <button className={`favorite-btn ${isInWishlist(id) ? "active" : ""}`} onClick={wishlistClickHandler}>
                             <span>
-                            <FontAwesomeIcon icon={faHeart} />
+                                <FontAwesomeIcon icon={faHeart} />
                             </span>
-
                         </button>
                     )}
-                   
                 </div>
 
                 {/* Text Section */}
                 <div className="single-explore-txt">
                     <h2>{name}</h2>
 
-                    {/* Location and Category */}
+                    {/* Location, Category and Price */}
                     <div className="explore-location-category">
                         <span className="explore-location">
                             <FontAwesomeIcon icon={faMapPin} />

@@ -1,26 +1,29 @@
 import { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faArrowLeft, faTag, faMapPin, faCalendarAlt, faEuro } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
 
 import { useGetOneTrip, useDeleteTrip } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
-import Spinner from "../spinner/Spinner";
+
 import AuthContext from "../../context/AuthContext.jsx";
 import WishlistContext from "../../context/WishlistContext.jsx";
 
+import Spinner from "../spinner/Spinner";
 import ConfirmModal from "../common/ConfirmModal";
+
 
 export default function TripDetails() {
     const { tripId } = useParams();
     const { trip, isLoading } = useGetOneTrip(tripId);
     const { deleteTrip } = useDeleteTrip(tripId);
     const { goToEdit, goToCatalog } = useTripNavigation();
+
     const { isAuthenticated, isAuthor } = useContext(AuthContext);
+    const { isInWishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-    const { isInWishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
     // Check if the current user is the author of the trip
     const isCurrentUserAuthor = isAuthenticated && trip?.author && isAuthor(trip?.author);

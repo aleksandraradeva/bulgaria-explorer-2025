@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
 import WishlistContext from "../../context/WishlistContext";
 
 import Spinner from "../spinner/Spinner";
@@ -45,7 +47,7 @@ export default function MyWishlist() {
                                     style={{
                                         fontWeight: "bold",
                                         fontSize: "1.125rem",
-                                        color: "#ff5a5f",
+                                        color: "#ee7571",
                                         marginBottom: "1rem",
                                     }}
                                 >
@@ -59,7 +61,7 @@ export default function MyWishlist() {
                                         backgroundColor: "#eff6ff",
                                         padding: "0.75rem",
                                         borderRadius: "0.5rem",
-                                        borderLeft: "10px solid #ee7571",
+                                        borderLeft: "10px solid #ff5a5f",
                                         color: "#374151",
                                         lineHeight: "1.625",
                                     }}

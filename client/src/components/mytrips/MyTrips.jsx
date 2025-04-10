@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 import { useMyTrips } from "../../hooks/useTrips";
 import { useTripNavigation } from "../../hooks/useTripNavigation";
 import { useDeleteTrip } from "../../hooks/useTrips";
@@ -11,7 +12,7 @@ export default function MyTrips() {
     const { myTrips, isLoading } = useMyTrips();
     const { goToEdit, goToCatalog } = useTripNavigation();
     const { deleteTrip } = useDeleteTrip();
-    const [showConfirmModal, setShowConfirmModal] = useState(null); 
+    const [showConfirmModal, setShowConfirmModal] = useState(null);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -66,7 +67,7 @@ export default function MyTrips() {
                                     message="Are you sure you want to delete this trip?"
                                     onConfirm={async () => {
                                         await deleteTrip(trip._id);
-                                        setShowConfirmModal(null); 
+                                        setShowConfirmModal(null);
                                         goToCatalog();
                                     }}
                                     onCancel={() => setShowConfirmModal(null)}

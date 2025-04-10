@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { useLogout } from "../../hooks/useAuth";
-
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+import { useLogout } from "../../hooks/useAuth";
 import AuthContext from "../../context/AuthContext.jsx";
 
 export default function Header() {
@@ -32,14 +32,14 @@ export default function Header() {
                                 <>
                                     <li className="scroll"><Link to="/trips/create">create trip</Link></li>
                                     <li className="scroll"><Link to="/trips/mytrips">my trips</Link></li>
-                                    <li className="scroll"><Link to="trips/mywishlist">my wishlist</Link></li>
+                                    <li className="scroll"><Link to="/trips/mywishlist">my wishlist</Link></li>
                                     {/* Logout button */}
                                     <li className="scroll">
                                         <button onClick={logout} className="logout-btn">logout</button>
                                     </li>
                                 </>
                             ) : (
-                                // Links for guest users
+                                // Links for guest users */}
                                 <>
                                     <li className="scroll"><Link to="/login">login</Link></li>
                                     <li className="scroll"><Link to="/register">register</Link></li>

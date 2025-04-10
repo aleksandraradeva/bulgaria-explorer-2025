@@ -12,10 +12,9 @@ export default function useTripValidation(formData) {
             return "Description must be at least 20 characters long.";
         }
 
-        if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(formData.image)) {
+        if (!/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(formData.image)) {
             return "Please enter a valid image URL.";
         }
-
         return null;
     };
 

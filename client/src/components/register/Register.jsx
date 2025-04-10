@@ -1,21 +1,24 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useRegister } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
-import { useNavigate } from "react-router-dom";
 import useRegisterValidation from "../../hooks/validationHooks/useRegisterValidation";
+
 import ErrorModal from "../common/ErrorModal";
 
 
 export default function Register() {
-    const navigate = useNavigate();
-    const { register } = useRegister();
+    const [errorMessage, setErrorMessage] = useState(null);
+
     const { formData, formChangeHandler, resetForm } = useForm({
         email: "",
         password: "",
         confirmPassword: "",
       });
 
-      const [errorMessage, setErrorMessage] = useState(null);
+      const navigate = useNavigate();
+      const { register } = useRegister();
       const { validate } = useRegisterValidation(formData);
 
       const formSubmitHandler = async (e) => {

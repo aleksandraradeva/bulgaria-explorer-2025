@@ -1,7 +1,7 @@
-import { useGetAllTrips } from "../../hooks/useTrips";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-solid-svg-icons";
+
+import { useGetAllTrips } from "../../hooks/useTrips";
 
 import TripListItem from "./trip-list-item/TripListItem";
 import Spinner from "../spinner/Spinner";
@@ -10,7 +10,6 @@ export default function TripList() {
     const { trips, isLoading } = useGetAllTrips();
 
     return (
-
         <section id="explore" className="explore">
             <div className="container">
                 {trips.length > 0 && !isLoading && (
