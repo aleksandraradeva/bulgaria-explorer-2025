@@ -20,6 +20,7 @@ author of the trip. Edit and Delete funcionality is available on the Details pag
 
 
 Project Architecture
+
 The project follows a 3-layer architecture, which helps maintain a clean separation of concerns and improves maintainability, scalability, and testability.
 1. Server Layer (Backend API)
 The server is built with Node.js and Express and is responsible for:
